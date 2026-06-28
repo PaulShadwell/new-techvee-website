@@ -1,0 +1,7 @@
+# Techvee GmbH — Apache config (Novatrend / cPanel hosting)
+
+# Serve the custom 404 page
+ErrorDocument 404 /404.html
+
+# Default document
+DirectoryIndex index.html

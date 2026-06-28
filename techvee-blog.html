@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Practical IT guidance for Swiss businesses — Microsoft 365, Azure, AI &amp; Copilot, security and nDSG compliance, written from real-world Swiss IT experience.">
+<meta name="author" content="Paul Shadwell">
+<link rel="canonical" href="https://techvee.com/techvee-blog.html">
+<meta name="theme-color" content="#111827">
+<meta name="robots" content="index,follow">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="favicon.svg">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Techvee GmbH">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="Blog — Techvee GmbH">
+<meta property="og:description" content="Practical IT guidance for Swiss businesses — Microsoft 365, Azure, AI &amp; Copilot, security and nDSG compliance, written from real-world Swiss IT experience.">
+<meta property="og:url" content="https://techvee.com/techvee-blog.html">
+<meta property="og:image" content="https://techvee.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Blog — Techvee GmbH">
+<meta name="twitter:description" content="Practical IT guidance for Swiss businesses — Microsoft 365, Azure, AI &amp; Copilot, security and nDSG compliance, written from real-world Swiss IT experience.">
+<meta name="twitter:image" content="https://techvee.com/og-image.png">
+<script>document.documentElement.className+=" js";</script>
+
+<title>Blog &mdash; Techvee GmbH</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.footer-col a,.footer-col p{display:block;color:rgba(255,255,255,0.38);font-size:13px;text-decoration:none;margin-bottom:7px;}
+.blog-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;}
+.blog-card{border:1px solid var(--border);border-radius:14px;padding:24px;transition:box-shadow 0.15s;}
+.blog-card:hover{box-shadow:0 6px 24px rgba(29,172,232,0.1);}
+.blog-card.featured{border:2px solid var(--brand);}
+.blog-cat{display:inline-block;font-size:11px;font-weight:700;color:var(--brand);text-transform:uppercase;letter-spacing:0.07em;margin-bottom:10px;}
+.blog-card h2{font-family:'Playfair Display',serif;font-size:19px;color:var(--dark);margin-bottom:10px;line-height:1.3;}
+.blog-card p{font-size:13px;color:var(--grey);line-height:1.65;margin-bottom:16px;}
+.blog-meta{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--grey);}
+.blog-read{font-size:13px;font-weight:600;color:var(--brand);text-decoration:none;}
+.topic-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.topic{background:white;border:1px solid var(--border);border-radius:9px;padding:14px 18px;}
+.topic strong{display:block;font-size:13px;font-weight:600;color:var(--dark);margin-bottom:3px;}
+.topic span{font-size:12px;color:var(--grey);line-height:1.5;}
+
+@media (max-width:920px){.blog-grid,.topic-grid{grid-template-columns:1fr 1fr;}}
+@media (max-width:600px){.blog-grid,.topic-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+<section class="page-hero has-graphic"><div class="page-glow"></div><div class="container">
+<div class="hero-text">
+<div class="breadcrumb"><a href="index.html">Home</a><span>/</span>Blog</div>
+<h1>Practical IT knowledge<br><em>for Swiss businesses.</em></h1>
+<p class="page-hero-sub">No vendor marketing, no generic best-practice lists. Articles from real experience working with Swiss businesses on Microsoft 365, compliance, AI, and cloud infrastructure.</p>
+</div>
+<div class="hero-graphic">
+  <svg viewBox="0 0 380 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Practical IT articles">
+    <defs>
+      <linearGradient id="bgrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#1DACE8" stop-opacity="0.14"/>
+        <stop offset="1" stop-color="#1DACE8" stop-opacity="0.02"/>
+      </linearGradient>
+    </defs>
+    <circle cx="190" cy="180" r="150" fill="none" stroke="rgba(255,255,255,0.06)"/>
+    <g class="hg-float-2">
+      <rect x="92" y="92" width="150" height="190" rx="12" fill="#0E1726" stroke="rgba(125,211,252,0.4)" stroke-width="2"/>
+    </g>
+    <g class="hg-float">
+      <rect x="120" y="74" width="150" height="190" rx="12" fill="url(#bgrad)" stroke="#1DACE8" stroke-width="2.5"/>
+      <rect x="138" y="94" width="60" height="40" rx="6" fill="rgba(29,172,232,0.18)" stroke="#7DD3FC" stroke-width="1.6"/>
+      <g stroke="#7DD3FC" stroke-width="3" stroke-linecap="round">
+        <line x1="210" y1="100" x2="252" y2="100"/>
+        <line x1="210" y1="116" x2="246" y2="116"/>
+        <line x1="138" y1="152" x2="252" y2="152"/>
+        <line x1="138" y1="168" x2="252" y2="168"/>
+        <line x1="138" y1="184" x2="234" y2="184"/>
+        <line x1="138" y1="208" x2="252" y2="208"/>
+        <line x1="138" y1="224" x2="222" y2="224"/>
+      </g>
+    </g>
+    <g class="hg-float-2">
+      <circle cx="278" cy="246" r="24" fill="#1DACE8"/>
+      <circle cx="270" cy="254" r="3.5" fill="#fff"/>
+      <path d="M266 244 a12 12 0 0 1 12 12" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+      <path d="M264 236 a20 20 0 0 1 20 20" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+    </g>
+    <circle class="hg-pulse" cx="300" cy="110" r="4" fill="#7DD3FC"/>
+    <circle class="hg-pulse" cx="78" cy="210" r="3" fill="#1DACE8"/>
+  </svg>
+</div>
+</div></section>
+
+<section class="section"><div class="container">
+<div class="eyebrow">Latest articles</div>
+<div class="sec-title">Start here.</div>
+<div class="blog-grid">
+<div class="blog-card featured">
+<span class="blog-cat">Swiss Compliance</span>
+<h2>Does your Microsoft 365 data actually live in Switzerland?</h2>
+<p>Most Swiss M365 tenants aren't configured for Swiss data residency by default. Here's how to check where your data is — and what to do if the answer surprises you.</p>
+<div class="blog-meta"><span>June 2026 &middot; 6 min read</span><a href="techvee-blog-m365-data-residency.html" class="blog-read">Read article &rarr;</a></div>
+</div>
+<div class="blog-card">
+<span class="blog-cat">AI &amp; Copilot</span>
+<h2>Copilot Cowork is GA — and the bill changes on 1 July</h2>
+<p>Copilot Cowork is now generally available and billed on usage. Here's how the pricing works, what changes on 1 July, and how to keep the costs under control.</p>
+<div class="blog-meta"><span>June 2026 &middot; 6 min read</span><a href="techvee-blog-copilot-cowork-pricing.html" class="blog-read">Read article &rarr;</a></div>
+</div>
+<div class="blog-card">
+<span class="blog-cat">Security</span>
+<h2>The 5 M365 security settings Swiss SMBs almost always have wrong</h2>
+<p>A 20-minute self-audit checklist that catches the most common configuration mistakes across Swiss tenants.</p>
+<div class="blog-meta"><span>Coming soon</span><span style="color:var(--grey);font-size:13px;">Draft in progress</span></div>
+</div>
+</div></div></section>
+
+<section class="section alt"><div class="container">
+<div class="eyebrow">Coming soon</div>
+<div class="sec-title">Topics in the pipeline.</div>
+<div class="sec-sub" style="margin-bottom:32px;">If there's a topic you'd particularly like covered, get in touch.</div>
+<div class="topic-grid">
+<div class="topic"><strong>Setting up M365 for a Swiss GmbH from scratch</strong><span>Licence choice, tenant config, email, Teams, and compliance from day one.</span></div>
+<div class="topic"><strong>The CLOUD Act explained for Swiss business owners</strong><span>What it actually means if you use Microsoft, Google, or AWS — and what you can do.</span></div>
+<div class="topic"><strong>Exoscale vs Azure for Swiss infrastructure workloads</strong><span>When to choose the sovereign option — and when it doesn't matter.</span></div>
+<div class="topic"><strong>nDSG in plain English</strong><span>Switzerland's data protection law that came into force in 2023, without legal jargon.</span></div>
+<div class="topic"><strong>Power Automate for Swiss SMBs: three automations to build first</strong><span>The workflows that save the most time for a typical Swiss small business.</span></div>
+<div class="topic"><strong>Why your WordPress site is probably a security risk</strong><span>The most common vulnerabilities I find on Swiss hosted sites, and how to fix them.</span></div>
+</div></div></section>
+
+<section class="cta-section"><div class="container">
+<div class="eyebrow">Have a question?</div>
+<h2>Suggest a topic.</h2>
+<p>If there's an IT or compliance topic you'd like me to write about, just ask.</p>
+<a href="techvee-contact.html" class="btn-primary">Get in touch</a>
+</div></section>
+<div id="site-footer"></div>
+<script src="components.js"></script>
+</body>
+</html>

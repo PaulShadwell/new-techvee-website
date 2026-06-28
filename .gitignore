@@ -1,0 +1,9 @@
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# FTP deploy state file (created by the deploy action; safe to ignore locally)
+.ftp-deploy-sync-state.json

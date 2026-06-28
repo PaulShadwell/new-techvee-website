@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /techvee-homepage-redesign.html
+
+Sitemap: https://techvee.com/sitemap.xml

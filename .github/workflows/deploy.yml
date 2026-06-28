@@ -1,0 +1,47 @@
+name: Deploy to Novatrend
+
+# Publishes the site to Novatrend whenever you push to the main branch.
+# You can also run it manually from the GitHub "Actions" tab (workflow_dispatch).
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  web-deploy:
+    name: Upload changed files via FTPS
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Deploy to Novatrend (FTPS)
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          # --- These three come from your GitHub repo secrets (see README) ---
+          server:   ${{ secrets.FTP_SERVER }}     # e.g. your Novatrend FTP host
+          username: ${{ secrets.FTP_USERNAME }}   # your FTP / cPanel user
+          password: ${{ secrets.FTP_PASSWORD }}   # stored as a secret, never in the repo
+
+          # Secure FTP over TLS. If your plan only offers plain FTP, change to "ftp"
+          # (not recommended). For SFTP/SSH, see the note in README.md.
+          protocol: ftps
+          port: 21
+
+          # Remote folder that maps to your live site. For most cPanel setups this is
+          # "public_html/". If techvee.com is an addon/subdomain, set it accordingly
+          # (e.g. "public_html/techvee.com/").
+          server-dir: public_html/
+
+          # Everything in the repo root is the website.
+          local-dir: ./
+
+          # Don't upload repo plumbing or working notes.
+          exclude: |
+            **/.git*
+            **/.git*/**
+            .github/**
+            README.md
+            .gitignore
+            **/*.md
