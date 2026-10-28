@@ -1,7 +1,9 @@
 # Techvee GmbH — website
 
-Static website for Techvee GmbH. Plain HTML/CSS/JS — no build step, no framework.
+Static website for Techvee GmbH. Plain HTML/CSS/JS — no framework, one tiny build step.
 Hosted on **Novatrend (Switzerland)**. Deploys automatically to Novatrend via GitHub Actions.
+
+Canonical address: **https://techvee.ch** — `techvee.com`, `www.` and `http://` all 301-redirect there (see `.htaccess`).
 
 ## How publishing works
 
@@ -46,6 +48,35 @@ No more cPanel File Manager or manual FTP.
 - Commit and push — or edit the file directly in GitHub's web editor and commit there.
 - The Action publishes it within a minute. Done.
 
+## Nav & footer — edit one file
+
+The shared navigation and footer live in **`components.js`** (`NAV_HTML` / `FOOTER_HTML`).
+Edit them there only. During deployment, `build/inline-components.js` bakes that markup
+into every page so the uploaded HTML is complete without JavaScript (crawlers, link
+checkers, reader mode and anyone fetching the raw page all see the nav, the address and
+the Impressum link). The source files in the repo keep their `<div id="site-nav">` /
+`<div id="site-footer">` placeholders, so local previews work exactly as before.
+
+To preview the built output locally: `node build/inline-components.js` in a scratch copy.
+
+## Domains (Novatrend / cPanel)
+
+- `techvee.ch` is the primary domain of the cPanel account (document root `public_html`).
+- `techvee.com` must be added in cPanel as an **Alias (parked) domain** of the same
+  account, so it serves the same `public_html`. The `.htaccess` then redirects every
+  request for `techvee.com`, `www.techvee.ch`, `www.techvee.com` or plain `http://`
+  to `https://techvee.ch/…` with a 301.
+- Check **AutoSSL** covers all four names (`techvee.ch`, `www.techvee.ch`,
+  `techvee.com`, `www.techvee.com`) so the redirect itself is served over valid TLS.
+- Email stays on `@techvee.com` — the redirect only affects the website.
+
+## Fonts & analytics
+
+- Inter and Playfair Display are **self-hosted** in `fonts/` (variable fonts, OFL).
+  No request goes to Google Fonts.
+- Analytics is self-hosted **Umami** (cookieless, no personal data, honours Do-Not-Track),
+  loaded from `components.js`. There is deliberately **no cookie banner**.
+
 ## Notes
 
 - **Security:** the workflow uses **FTPS** (FTP over TLS). If your Novatrend plan
@@ -54,7 +85,7 @@ No more cPanel File Manager or manual FTP.
   an SFTP action (e.g. `wlixcc/SFTP-Deploy-Action`) — ask Claude and it'll convert it.
 - **The Action never deletes** remote files that aren't in the repo, so any old files
   already on the server stay until you remove them once manually.
-- **`.htaccess`** is included and will be uploaded (it powers the custom 404 page).
+- **`.htaccess`** is included and will be uploaded (domain redirects, 404 page, security headers, caching).
 
 ## Site structure
 

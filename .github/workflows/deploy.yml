@@ -16,6 +16,19 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      # Bake the shared nav/footer (from components.js) into every page so the
+      # uploaded HTML is complete without JavaScript. Source files keep their
+      # placeholders; only the deployed copies are modified.
+      - name: Inline nav and footer
+        run: |
+          node build/inline-components.js
+          node build/inline-components.js --check
+
       - name: Deploy to Novatrend (FTPS)
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
@@ -42,6 +55,7 @@ jobs:
             **/.git*
             **/.git*/**
             .github/**
+            build/**
             README.md
             .gitignore
             **/*.md

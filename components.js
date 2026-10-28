@@ -4,9 +4,10 @@
 const CALENDLY_URL = "https://calendly.com/paul-shadwell-techvee/30min";
 
 // ── Privacy-friendly, cookieless analytics (self-hosted Umami) ──
+// Umami sets no cookies and stores no personal identifiers, so it is loaded
+// without a consent banner. It honours the browser's Do-Not-Track setting.
 const UMAMI_SRC = "https://analytics.swissqrbills.ch/script.js";
 const UMAMI_WEBSITE_ID = "105601df-21ec-4bdc-81b8-6ffe4af4f689";
-const CONSENT_KEY = "techvee-cookie-consent"; // values: "accepted" | "declined"
 
 const NAV_HTML = `
 <nav>
@@ -49,21 +50,21 @@ const FOOTER_HTML = `
         <a href="techvee-swiss-it-compliance.html">Swiss IT Compliance</a>
         <a href="techvee-swiss-it-compliance.html">Microsoft 365 &amp; Azure</a>
         <a href="techvee-ai-copilot.html">AI &amp; Automation</a>
-        <a href="techvee-swiss-it-compliance.html">Exoscale &amp; SafeSwissCloud</a>
-        <a href="techvee-hosting.html">Web Hosting</a>
+        <a href="techvee-swiss-it-compliance.html">Exoscale, SafeSwissCloud &amp; Infomaniak</a>
+        <a href="techvee-hosting.html">Web Hosting &amp; Swiss Backup</a>
       </div>
       <div class="footer-col">
         <h4>Company</h4>
         <a href="techvee-about.html">About Paul</a>
         <a href="techvee-blog.html">Blog</a>
         <a href="techvee-contact.html">Contact</a>
-        <p style="margin-top:8px;">Turbenthal, Canton Zurich</p>
+        <address style="margin-top:8px;font-style:normal;">Techvee GmbH<br>Sonnenbergstrasse 11b<br>8488 Turbenthal, Switzerland</address>
         <a href="mailto:info@techvee.com">info@techvee.com</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>&copy; 2026 Techvee GmbH &middot; CHE-462.857.052 &middot; MWST registered &middot; Turbenthal, Switzerland</span>
-      <span><a href="privacy.html">Privacy Policy</a> &middot; <a href="impressum.html">Impressum</a> &middot; <a href="#" data-cookie-settings>Cookie settings</a></span>
+      <span>&copy; 2026 Techvee GmbH &middot; UID CHE-462.857.052 MWST &middot; Turbenthal, Canton Zurich</span>
+      <span><a href="privacy.html">Privacy Policy</a> &middot; <a href="impressum.html">Impressum</a></span>
     </div>
   </div>
 </footer>`;
@@ -109,68 +110,17 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('scroll', onScroll, { passive: true });
   }
 
-  // ── Cookie consent + privacy-friendly analytics ──
+  // ── Cookieless analytics (no banner needed: no cookies, no personal data) ──
   (function () {
-    var loaded = false;
-    function getConsent() {
-      try { return localStorage.getItem(CONSENT_KEY); } catch (e) { return null; }
-    }
-    function setConsent(v) {
-      try { localStorage.setItem(CONSENT_KEY, v); } catch (e) {}
-    }
-    function loadAnalytics() {
-      if (loaded || document.querySelector('script[data-website-id="' + UMAMI_WEBSITE_ID + '"]')) return;
-      loaded = true;
-      var s = document.createElement('script');
-      s.defer = true;
-      s.src = UMAMI_SRC;
-      s.setAttribute('data-website-id', UMAMI_WEBSITE_ID);
-      document.head.appendChild(s);
-    }
-
-    var banner;
-    function buildBanner() {
-      banner = document.createElement('div');
-      banner.className = 'cookie-banner';
-      banner.setAttribute('role', 'dialog');
-      banner.setAttribute('aria-label', 'Cookie and analytics notice');
-      banner.innerHTML =
-        '<div class="cookie-inner">' +
-          '<p class="cookie-text">Techvee uses <strong>privacy-friendly, cookieless analytics</strong>, self-hosted in Switzerland, to understand how this site is used. No tracking cookies, no data selling. See our <a href="privacy.html">Privacy Policy</a>.</p>' +
-          '<div class="cookie-actions">' +
-            '<button type="button" class="cookie-btn cookie-decline">Decline</button>' +
-            '<button type="button" class="cookie-btn cookie-accept">Accept</button>' +
-          '</div>' +
-        '</div>';
-      document.body.appendChild(banner);
-      requestAnimationFrame(function () { banner.classList.add('show'); });
-      banner.querySelector('.cookie-accept').addEventListener('click', function () {
-        setConsent('accepted'); loadAnalytics(); hideBanner();
-      });
-      banner.querySelector('.cookie-decline').addEventListener('click', function () {
-        setConsent('declined'); hideBanner();
-      });
-    }
-    function hideBanner() {
-      if (!banner) return;
-      banner.classList.remove('show');
-      setTimeout(function () { if (banner && banner.parentNode) banner.parentNode.removeChild(banner); banner = null; }, 300);
-    }
-
-    var consent = getConsent();
-    if (consent === 'accepted') {
-      loadAnalytics();
-    } else if (consent !== 'declined') {
-      buildBanner();
-    }
-
-    // "Cookie settings" link in the footer reopens the banner
-    document.querySelectorAll('[data-cookie-settings]').forEach(function (el) {
-      el.addEventListener('click', function (e) {
-        e.preventDefault();
-        if (!banner) buildBanner();
-      });
-    });
+    if (document.querySelector('script[data-website-id="' + UMAMI_WEBSITE_ID + '"]')) return;
+    var s = document.createElement('script');
+    s.defer = true;
+    s.src = UMAMI_SRC;
+    s.setAttribute('data-website-id', UMAMI_WEBSITE_ID);
+    s.setAttribute('data-do-not-track', 'true'); // respect browser DNT
+    document.head.appendChild(s);
+    // Tidy up the consent flag left by the old cookie banner.
+    try { localStorage.removeItem('techvee-cookie-consent'); } catch (e) {}
   })();
 
   // ── Calendly popup booking ──
@@ -207,10 +157,11 @@ document.addEventListener('DOMContentLoaded', function () {
   // ── Scroll-reveal animations ──
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (!reduce && 'IntersectionObserver' in window) {
+    // Cards and list items animate in; headings and eyebrows are never hidden.
     const selector = [
       '.pain-card', '.svc-card', '.svc-block', '.blog-card', '.card',
       '.feat', '.partner-card', '.ai-feat', '.swiss-feat', '.hosting-tier',
-      '.step', '.c-detail', '.sec-title', '.eyebrow', '.trust-item'
+      '.step', '.c-detail', '.trust-item'
     ].join(',');
 
     const els = Array.from(document.querySelectorAll(selector))
@@ -244,5 +195,10 @@ document.addEventListener('DOMContentLoaded', function () {
         io.observe(el);
       }
     });
+
+    // Safety net: whatever happens (observer quirks, print, screenshots,
+    // reader modes), nothing stays hidden for more than a moment.
+    setTimeout(() => els.forEach(el => el.classList.add('is-visible')), 1500);
+    window.addEventListener('beforeprint', () => els.forEach(el => el.classList.add('is-visible')));
   }
 });

@@ -11,7 +11,33 @@
    • Max content width:           1160px (.container)
 ═══════════════════════════════════════════════════════════════════════════ */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+/* Self-hosted web fonts (SIL Open Font License) — served from techvee.ch, no third-party request.
+   Inter and Playfair Display are variable fonts: one file covers every weight we use. */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url('fonts/Inter-variable.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('fonts/PlayfairDisplay-variable.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: italic;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('fonts/PlayfairDisplay-italic-variable.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 
 /* ── RESET & VARIABLES ── */
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -157,34 +183,6 @@ footer { background: #0B1120; color: rgba(255,255,255,0.45); padding: 48px 0; fo
 @media (max-width: 920px) {
   .page-hero.has-graphic .container { grid-template-columns: 1fr; }
   .hero-graphic { display: none; }
-}
-
-/* ── COOKIE CONSENT BANNER ── */
-.cookie-banner {
-  position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 1000;
-  background: var(--dark); color: rgba(255,255,255,0.82);
-  border: 1px solid rgba(255,255,255,0.10); border-radius: 14px;
-  box-shadow: 0 18px 48px rgba(0,0,0,0.40);
-  opacity: 0; transform: translateY(16px); transition: opacity 0.3s ease, transform 0.3s ease;
-  max-width: 760px; margin: 0 auto;
-}
-.cookie-banner.show { opacity: 1; transform: translateY(0); }
-.cookie-inner { display: flex; align-items: center; gap: 20px; padding: 18px 22px; flex-wrap: wrap; }
-.cookie-text { font-size: 13.5px; line-height: 1.6; flex: 1; min-width: 240px; margin: 0; }
-.cookie-text strong { color: #fff; font-weight: 600; }
-.cookie-text a { color: var(--brand); text-decoration: none; }
-.cookie-text a:hover { text-decoration: underline; }
-.cookie-actions { display: flex; gap: 10px; flex-shrink: 0; }
-.cookie-btn { font-family: 'Inter', sans-serif; font-size: 13.5px; font-weight: 600; padding: 10px 20px; border-radius: 7px; cursor: pointer; border: 1px solid transparent; transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease; }
-.cookie-btn:hover { transform: translateY(-1px); }
-.cookie-accept { background: var(--brand); color: #fff; }
-.cookie-accept:hover { background: var(--brand-dark); }
-.cookie-decline { background: transparent; color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.22); }
-.cookie-decline:hover { color: #fff; border-color: rgba(255,255,255,0.45); }
-@media (max-width: 540px) {
-  .cookie-inner { flex-direction: column; align-items: stretch; gap: 14px; }
-  .cookie-actions { justify-content: stretch; }
-  .cookie-btn { flex: 1; }
 }
 
 /* ── BUTTONS ── */
@@ -377,3 +375,13 @@ html { scroll-behavior: smooth; }
   .footer-inner { gap: 24px; }
   .footer-brand { flex-basis: 100%; }
 }
+
+/* ── INLINE SVG ICONS (replace the old emoji; sized by the container's font-size) ── */
+.pain-icon svg, .svc-icon svg, .ai-feat-icon svg, .swiss-feat-icon svg, .sw-cert-icon svg,
+.feat-icon svg, .card-icon svg, .incl-icon svg, .c-icon svg {
+  width: 1.1em; height: 1.1em; display: block; color: var(--brand);
+}
+.card-icon svg, .incl-icon svg { width: 1.2em; height: 1.2em; }
+.pain-icon { line-height: 0; }
+.sw-cert-icon svg, .ai-feat-icon svg, .svc-card.featured .svc-icon svg { color: #7DD3FC; }
+.sw-cert-icon { display: flex; align-items: center; }

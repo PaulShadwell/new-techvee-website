@@ -1,7 +1,59 @@
 # Techvee GmbH — Apache config (Novatrend / cPanel hosting)
+#
+# Domains: techvee.ch is the canonical site. techvee.com (and any www. or
+# http:// variant of either) is permanently redirected to https://techvee.ch
+# so both domains keep working but search engines index exactly one copy.
+# In cPanel, techvee.com must be an *alias (parked) domain* of this account
+# pointing at the same public_html, and AutoSSL must cover both names.
 
-# Serve the custom 404 page
+# ── Canonical host + HTTPS + no index.html ──
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# 1. Anything that is not https://techvee.ch → 301 to https://techvee.ch/<path>
+RewriteCond %{HTTP_HOST} !^techvee\.ch$ [NC,OR]
+RewriteCond %{HTTPS} !=on
+RewriteRule ^(.*)$ https://techvee.ch/$1 [R=301,L]
+
+# 2. /index.html → /   (keeps one URL per page)
+RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
+RewriteRule ^index\.html$ / [R=301,L]
+
+# 3. Retired page from the old site
+RewriteRule ^techvee-homepage-redesign\.html$ / [R=301,L]
+</IfModule>
+
+# ── Error page / default document ──
 ErrorDocument 404 /404.html
-
-# Default document
 DirectoryIndex index.html
+
+# ── Security headers ──
+<IfModule mod_headers.c>
+Header always set X-Content-Type-Options "nosniff"
+Header always set X-Frame-Options "SAMEORIGIN"
+Header always set Referrer-Policy "strict-origin-when-cross-origin"
+Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+</IfModule>
+
+# ── Compression ──
+<IfModule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml application/javascript application/json image/svg+xml font/woff2
+</IfModule>
+
+# ── Browser caching ──
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresByType text/html "access plus 1 hour"
+ExpiresByType text/css "access plus 7 days"
+ExpiresByType application/javascript "access plus 7 days"
+ExpiresByType image/png "access plus 30 days"
+ExpiresByType image/jpeg "access plus 30 days"
+ExpiresByType image/svg+xml "access plus 30 days"
+ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+# ── Keep repo plumbing out of the web root, just in case ──
+<FilesMatch "^(\.gitignore|README\.md|package\.json)$">
+Require all denied
+</FilesMatch>
