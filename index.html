@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Senior Microsoft 365, Azure &amp; AI consultant in Canton Zurich. Swiss IT compliance (nDSG), Copilot deployment and CSP licensing — 40+ years' experience, no junior technicians.">
 <meta name="author" content="Paul Shadwell">
-<link rel="canonical" href="https://techvee.com/index.html">
+<link rel="canonical" href="https://techvee.ch/">
 <meta name="theme-color" content="#111827">
 <meta name="robots" content="index,follow">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -16,19 +16,18 @@
 <meta property="og:locale" content="en_GB">
 <meta property="og:title" content="Techvee GmbH — IT Consultancy for Swiss Businesses">
 <meta property="og:description" content="Senior Microsoft 365, Azure &amp; AI consultant in Canton Zurich. Swiss IT compliance (nDSG), Copilot deployment and CSP licensing — 40+ years' experience, no junior technicians.">
-<meta property="og:url" content="https://techvee.com/index.html">
-<meta property="og:image" content="https://techvee.com/og-image.png">
+<meta property="og:url" content="https://techvee.ch/">
+<meta property="og:image" content="https://techvee.ch/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Techvee GmbH — IT Consultancy for Swiss Businesses">
 <meta name="twitter:description" content="Senior Microsoft 365, Azure &amp; AI consultant in Canton Zurich. Swiss IT compliance (nDSG), Copilot deployment and CSP licensing — 40+ years' experience, no junior technicians.">
-<meta name="twitter:image" content="https://techvee.com/og-image.png">
+<meta name="twitter:image" content="https://techvee.ch/og-image.png">
 <script>document.documentElement.className+=" js";</script>
 
 <title>Techvee GmbH — IT Consultancy for Swiss Businesses</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <style>
 /* ── CONTAINER ── */
@@ -120,7 +119,12 @@ nav{background:white;border-bottom:1px solid var(--border);position:sticky;top:0
 .partners-intro{text-align:center;max-width:640px;margin:0 auto 52px;}
 .partners-intro .sec-sub{margin-bottom:0;max-width:100%;}
 .partner-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:40px;}
+.partner-grid-3{grid-template-columns:1fr 1fr 1fr;gap:20px;}
 .partner-card{border:1px solid var(--border);border-radius:16px;padding:32px;position:relative;overflow:hidden;}
+a.partner-card-compact{display:block;padding:26px;text-decoration:none;color:inherit;transition:box-shadow .15s,transform .15s;}
+a.partner-card-compact:hover{box-shadow:0 8px 24px rgba(29,172,232,0.12);transform:translateY(-2px);}
+.partner-card-compact .partner-name{font-size:20px;}
+.partner-card-compact .partner-desc{font-size:13.5px;margin-bottom:14px;}
 .partner-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--brand);}
 .partner-name{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--dark);margin-bottom:4px;}
 .partner-tagline{font-size:13px;color:var(--brand);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:14px;}
@@ -173,12 +177,12 @@ footer{background:#0B1120;color:rgba(255,255,255,0.45);padding:48px 0;font-size:
 
 /* ── responsive grids ── */
 @media (max-width:920px){
-  .pain-grid,.svc-grid,.blog-grid,.partner-grid{grid-template-columns:1fr 1fr;}
+  .pain-grid,.svc-grid,.blog-grid,.partner-grid,.partner-grid-3{grid-template-columns:1fr 1fr;}
   .ai-inner,.swiss-inner,.hosting-inner,.about-inner{grid-template-columns:1fr;gap:40px;}
   .hero h1{font-size:40px;}
 }
 @media (max-width:600px){
-  .pain-grid,.svc-grid,.blog-grid,.partner-grid{grid-template-columns:1fr;}
+  .pain-grid,.svc-grid,.blog-grid,.partner-grid,.partner-grid-3{grid-template-columns:1fr;}
   .about-inner{gap:24px;}
   .about-photo{margin:0 auto;}
   .hero h1{font-size:31px;}
@@ -190,9 +194,9 @@ footer{background:#0B1120;color:rgba(255,255,255,0.45);padding:48px 0;font-size:
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "name": "Techvee GmbH",
-  "image": "https://techvee.com/og-image.png",
-  "@id": "https://techvee.com/#business",
-  "url": "https://techvee.com/",
+  "image": "https://techvee.ch/og-image.png",
+  "@id": "https://techvee.ch/#business",
+  "url": "https://techvee.ch/",
   "email": "info@techvee.com",
   "description": "Senior Microsoft 365, Azure and AI consultancy for Swiss SMBs and expat business owners. Swiss IT compliance, Copilot deployment and CSP licensing.",
   "founder": {
@@ -211,10 +215,15 @@ footer{background:#0B1120;color:rgba(255,255,255,0.45);padding:48px 0;font-size:
   ],
   "address": {
     "@type": "PostalAddress",
+    "streetAddress": "Sonnenbergstrasse 11b",
+    "postalCode": "8488",
     "addressLocality": "Turbenthal",
     "addressRegion": "Canton Zurich",
     "addressCountry": "CH"
   },
+  "vatID": "CHE-462.857.052 MWST",
+  "legalName": "Techvee GmbH",
+  "sameAs": ["https://techvee.com/"],
   "priceRange": "CHF",
   "knowsAbout": [
     "Microsoft 365",
@@ -339,28 +348,28 @@ footer{background:#0B1120;color:rgba(255,255,255,0.45);padding:48px 0;font-size:
     <div class="sec-sub">If any of these feel like you, let's have a conversation. The first 30 minutes is on me.</div>
     <div class="pain-grid">
       <div class="pain-card">
-        <div class="pain-icon">🔒</div>
+        <div class="pain-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
         <div>
           <h3>You're not sure your data is where it should be</h3>
           <p>Switzerland's nDSG came into force in September 2023. Many businesses have no idea whether their Microsoft 365 data actually lives in Switzerland — or sits in a US datacenter subject to the CLOUD Act.</p>
         </div>
       </div>
       <div class="pain-card">
-        <div class="pain-icon">🧩</div>
+        <div class="pain-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></div>
         <div>
           <h3>Your M365 setup was done by someone who's long gone</h3>
           <p>It works — mostly. But nobody really knows why things are configured the way they are, and nobody wants to touch it in case something breaks.</p>
         </div>
       </div>
       <div class="pain-card">
-        <div class="pain-icon">🤖</div>
+        <div class="pain-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M12 8V4M9 4h6"/><circle cx="9" cy="14" r="1.2" fill="currentColor" stroke="none"/><circle cx="15" cy="14" r="1.2" fill="currentColor" stroke="none"/></svg></div>
         <div>
           <h3>Everyone's talking about AI but you don't know where to start</h3>
           <p>Microsoft Copilot is already included in many M365 plans — but most businesses have no idea how to deploy it sensibly, or what the Swiss data and compliance implications are.</p>
         </div>
       </div>
       <div class="pain-card">
-        <div class="pain-icon">💰</div>
+        <div class="pain-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/><path d="M6 15h4"/></svg></div>
         <div>
           <h3>You need IT expertise but can't justify a full-time hire</h3>
           <p>A senior IT person in Zurich costs CHF 100,000+ per year. You need maybe 2–3 hours a week. A monthly retainer makes far more sense — and you get a far more experienced person.</p>
@@ -378,7 +387,7 @@ footer{background:#0B1120;color:rgba(255,255,255,0.45);padding:48px 0;font-size:
     <div class="sec-sub">No ambiguous day rates, no hidden scopes, no junior technicians billing as seniors.</div>
     <div class="svc-grid">
       <div class="svc-card">
-        <div class="svc-icon">⚡</div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg></div>
         <div class="svc-title">Ad-hoc Support</div>
         <div class="svc-price">CHF 150<span>/hr</span></div>
         <div class="svc-note">Minimum 1 hour &middot; Remote or on-site</div>
@@ -394,7 +403,7 @@ footer{background:#0B1120;color:rgba(255,255,255,0.45);padding:48px 0;font-size:
       </div>
       <div class="svc-card featured">
         <div class="svc-badge">Most popular</div>
-        <div class="svc-icon">🤝</div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7"/><path d="M18.5 13.5a6.5 6.5 0 0 1 3 6.5"/></svg></div>
         <div class="svc-title">Monthly Retainer</div>
         <div class="svc-price">CHF 600<span>/mo</span></div>
         <div class="svc-note">5 hours included &middot; Unused hours roll over</div>
@@ -410,7 +419,7 @@ footer{background:#0B1120;color:rgba(255,255,255,0.45);padding:48px 0;font-size:
         <a href="techvee-contact.html" class="svc-cta">Get started</a>
       </div>
       <div class="svc-card">
-        <div class="svc-icon">📋</div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1"/><path d="M9 11h6M9 15h6"/></svg></div>
         <div class="svc-title">Project Work</div>
         <div class="svc-price" style="font-size:22px;line-height:1.3;padding-top:4px;">Fixed-price<br>quotes</div>
         <div class="svc-note">Scoped upfront &middot; No surprises on delivery</div>
@@ -437,28 +446,28 @@ footer{background:#0B1120;color:rgba(255,255,255,0.45);padding:48px 0;font-size:
         <div class="sec-title" style="color:white;">AI is already inside your M365 subscription. Are you using it?</div>
         <div class="sec-sub">Most Swiss SMBs are sitting on unused AI capability — already paid for in their Microsoft licences. I help you deploy it safely, compliantly, and in a way that actually saves your team time.</div>
         <div class="ai-feat">
-          <div class="ai-feat-icon">🤖</div>
+          <div class="ai-feat-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M12 8V4M9 4h6"/><circle cx="9" cy="14" r="1.2" fill="currentColor" stroke="none"/><circle cx="15" cy="14" r="1.2" fill="currentColor" stroke="none"/></svg></div>
           <div>
             <h4>Microsoft Copilot Implementation</h4>
             <p>Copilot is built into Teams, Outlook, Word, and Excel. I assess your readiness, handle the rollout, and train your team to use it effectively and safely.</p>
           </div>
         </div>
         <div class="ai-feat">
-          <div class="ai-feat-icon">🔄</div>
+          <div class="ai-feat-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 1-15.5 6.2L3 16"/><path d="M3 21v-5h5"/><path d="M3 12a9 9 0 0 1 15.5-6.2L21 8"/><path d="M21 3v5h-5"/></svg></div>
           <div>
             <h4>AI-Powered Workflow Automation</h4>
             <p>Using Power Automate and AI Builder, I identify and automate repetitive tasks — from document processing to approval flows — cutting hours of admin per week.</p>
           </div>
         </div>
         <div class="ai-feat">
-          <div class="ai-feat-icon">🛡️</div>
+          <div class="ai-feat-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
           <div>
             <h4>AI Compliance &amp; Governance (Swiss)</h4>
             <p>What does the EU AI Act mean for Swiss businesses? How do you govern AI use under nDSG? Clear, practical guidance — not theoretical frameworks.</p>
           </div>
         </div>
         <div class="ai-feat">
-          <div class="ai-feat-icon">💡</div>
+          <div class="ai-feat-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M8.5 15a6 6 0 1 1 7 0c-.8.6-1.5 1.4-1.5 2.5v.5h-4v-.5c0-1.1-.7-1.9-1.5-2.5z"/></svg></div>
           <div>
             <h4>Custom AI Applications</h4>
             <p>Hands-on experience building AI-powered business tools — from Swiss QR Bill generators to compliance dashboards. I can scope and build practical AI applications for your specific needs.</p>
@@ -502,28 +511,28 @@ footer{background:#0B1120;color:rgba(255,255,255,0.45);padding:48px 0;font-size:
         <div class="sec-title">I understand Switzerland.<br>Most IT consultants don't.</div>
         <p style="color:var(--grey);font-size:15px;line-height:1.72;margin-bottom:32px;">From Swiss data residency to licensing quirks specific to Swiss businesses — I've been doing this here for years, including for Swiss-regulated financial institutions.</p>
         <div class="swiss-feat">
-          <div class="swiss-feat-icon">🏛️</div>
+          <div class="swiss-feat-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 22h18"/><path d="M5 18h14"/><path d="M6 18v-7M10 18v-7M14 18v-7M18 18v-7"/><path d="M3 11l9-6 9 6z"/></svg></div>
           <div>
             <h4>nDSG / FADP Compliance</h4>
             <p>Switzerland's revised data protection law has real teeth since September 2023. I help you understand your obligations and document your compliance in plain English.</p>
           </div>
         </div>
         <div class="swiss-feat">
-          <div class="swiss-feat-icon">🗺️</div>
+          <div class="swiss-feat-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
           <div>
             <h4>Microsoft Swiss Data Residency</h4>
             <p>Microsoft runs datacenters in Geneva &amp; Zurich. I configure your M365 and Azure to keep data in Switzerland and produce documentation to prove it to auditors or clients.</p>
           </div>
         </div>
         <div class="swiss-feat">
-          <div class="swiss-feat-icon">☁️</div>
+          <div class="swiss-feat-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a4 4 0 0 1-.6-7.95A6 6 0 0 1 18 9a4.5 4.5 0 0 1 0 9z"/></svg></div>
           <div>
             <h4>CLOUD Act Exposure Assessment</h4>
             <p>US-headquartered cloud providers are subject to the CLOUD Act regardless of data location. I assess your exposure and document your risk position for stakeholders and legal teams.</p>
           </div>
         </div>
         <div class="swiss-feat">
-          <div class="swiss-feat-icon">📜</div>
+          <div class="swiss-feat-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h11a3 3 0 0 1 3 3v12a3 3 0 0 1-3 3H6"/><path d="M6 3a3 3 0 0 0-3 3v1h6V6a3 3 0 0 0-3-3z"/><path d="M6 21a3 3 0 0 1-3-3v-1h12v1a3 3 0 0 1-3 3"/><path d="M11 9h5M11 13h5"/></svg></div>
           <div>
             <h4>Swiss Microsoft CSP Licensing</h4>
             <p>As a licensed Swiss Microsoft Cloud Solution Provider, I handle your M365 licensing directly — CHF billing, Swiss invoicing, and a local contact who actually responds.</p>
@@ -533,35 +542,35 @@ footer{background:#0B1120;color:rgba(255,255,255,0.45);padding:48px 0;font-size:
       <div class="swiss-box">
         <h3>Credentials &amp; registrations</h3>
         <div class="sw-cert">
-          <div class="sw-cert-icon">🏢</div>
+          <div class="sw-cert-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="1.5"/><path d="M9 7h2M13 7h2M9 11h2M13 11h2M9 15h2M13 15h2"/><path d="M10 21v-3h4v3"/></svg></div>
           <div>
             <strong>Techvee GmbH</strong>
             <span>Swiss-registered GmbH &middot; Turbenthal, Canton Zurich</span>
           </div>
         </div>
         <div class="sw-cert">
-          <div class="sw-cert-icon">☁️</div>
+          <div class="sw-cert-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 18a4 4 0 0 1-.6-7.95A6 6 0 0 1 18 9a4.5 4.5 0 0 1 0 9z"/></svg></div>
           <div>
             <strong>Microsoft Cloud Solution Provider</strong>
             <span>Licensed M365 &amp; Azure reseller &middot; Switzerland</span>
           </div>
         </div>
         <div class="sw-cert">
-          <div class="sw-cert-icon">🔐</div>
+          <div class="sw-cert-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
           <div>
             <strong>MWST Registered</strong>
             <span>VAT-compliant Swiss invoicing &middot; CHF billing</span>
           </div>
         </div>
         <div class="sw-cert">
-          <div class="sw-cert-icon">🌐</div>
+          <div class="sw-cert-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></div>
           <div>
             <strong>Swiss Web Hosting (Novatrend)</strong>
             <span>All hosted data on Swiss infrastructure</span>
           </div>
         </div>
         <div class="sw-cert">
-          <div class="sw-cert-icon">🤖</div>
+          <div class="sw-cert-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M12 8V4M9 4h6"/><circle cx="9" cy="14" r="1.2" fill="currentColor" stroke="none"/><circle cx="15" cy="14" r="1.2" fill="currentColor" stroke="none"/></svg></div>
           <div>
             <strong>AI &amp; Copilot Practitioner</strong>
             <span>Microsoft Copilot &middot; Claude AI &middot; Power Platform AI</span>
@@ -579,56 +588,34 @@ footer{background:#0B1120;color:rgba(255,255,255,0.45);padding:48px 0;font-size:
     <div class="partners-intro">
       <div class="eyebrow">Swiss cloud partner ecosystem</div>
       <div class="sec-title">True sovereignty beyond Microsoft</div>
-      <p class="sec-sub">Through my partnerships with Exoscale and SafeSwissCloud, I can offer Swiss businesses a genuinely sovereign cloud stack — entirely free from US jurisdiction, CLOUD Act exposure, or foreign government access.</p>
+      <p class="sec-sub">When Microsoft's Swiss regions aren't enough, I work with three Swiss-domiciled providers that sit entirely outside US jurisdiction — and I'll tell you honestly which one (or which mix) fits.</p>
     </div>
-    <div class="partner-grid">
+    <div class="partner-grid partner-grid-3">
 
-      <div class="partner-card">
+      <a class="partner-card partner-card-compact" href="techvee-swiss-it-compliance.html#sovereign">
         <div class="partner-name">Exoscale</div>
-        <div class="partner-tagline">Swiss alternative to AWS &amp; GCP</div>
-        <p class="partner-desc">Founded in Lausanne, Exoscale is Switzerland's leading cloud infrastructure platform — a sovereign, pay-as-you-go alternative to Amazon Web Services for businesses that need scalable compute, storage, and managed services without US jurisdiction risk.</p>
-        <ul class="partner-feats">
-          <li class="partner-feat">Virtual machines, object storage (S3-compatible), managed Kubernetes</li>
-          <li class="partner-feat">Managed databases: PostgreSQL, MySQL, Redis, Kafka</li>
-          <li class="partner-feat">Datacentres in Zurich &amp; Geneva — not subject to US CLOUD Act</li>
-          <li class="partner-feat">Billed by the second — no lock-in, no minimum commitments</li>
-          <li class="partner-feat">100% renewable energy in Swiss zones</li>
-          <li class="partner-feat">Part of A1 Digital (A1 Telekom Austria Group)</li>
-        </ul>
-        <div class="partner-badges">
-          <span class="partner-badge">ISO 27001</span>
-          <span class="partner-badge">Swiss law</span>
-          <span class="partner-badge">CLOUD Act exempt</span>
-          <span class="partner-badge">GDPR compliant</span>
-          <span class="partner-badge">100% renewable</span>
-        </div>
-      </div>
+        <div class="partner-tagline">Swiss alternative to AWS</div>
+        <p class="partner-desc">Pay-as-you-go compute, S3-compatible storage, managed Kubernetes and databases in Zurich and Geneva. Billed by the second, no lock-in.</p>
+        <div class="partner-badges"><span class="partner-badge">ISO 27001</span><span class="partner-badge">CLOUD Act exempt</span></div>
+      </a>
 
-      <div class="partner-card">
+      <a class="partner-card partner-card-compact" href="techvee-swiss-it-compliance.html#sovereign">
         <div class="partner-name">SafeSwissCloud</div>
-        <div class="partner-tagline">Sovereign cloud for regulated industries</div>
-        <p class="partner-desc">SafeSwissCloud owns and operates its own datacentres in Switzerland — no third-party infrastructure, no foreign entanglement. ISO 27001/17/18 certified and FINMA-compliant, it is the cloud of choice for Swiss financial institutions, healthcare providers, and organisations with the most demanding data sovereignty requirements.</p>
-        <ul class="partner-feats">
-          <li class="partner-feat">IaaS on OpenStack, Kubernetes and VMware — plus Private AI</li>
-          <li class="partner-feat">Own Swiss datacentres — 100% sovereign, not subject to CLOUD Act</li>
-          <li class="partner-feat">FINMA RS 2018/3 compliant — ideal for Swiss banks and financial firms</li>
-          <li class="partner-feat">Managed IT services, security operations centre (SOC), 24/7 support</li>
-          <li class="partner-feat">Private AI: GPU pools in Switzerland, no data exfiltration</li>
-          <li class="partner-feat">100% renewable energy, TÜV certified since 2024</li>
-        </ul>
-        <div class="partner-badges">
-          <span class="partner-badge">ISO 27001/17/18</span>
-          <span class="partner-badge">FINMA compliant</span>
-          <span class="partner-badge">HIPAA</span>
-          <span class="partner-badge">PCI-DSS</span>
-          <span class="partner-badge">CLOUD Act exempt</span>
-          <span class="partner-badge">Swiss owned</span>
-        </div>
-      </div>
+        <div class="partner-tagline">For regulated industries</div>
+        <p class="partner-desc">Own Swiss datacentres, FINMA-aligned, private AI on Swiss GPUs. The choice for financial, legal and healthcare organisations.</p>
+        <div class="partner-badges"><span class="partner-badge">ISO 27001/17/18</span><span class="partner-badge">FINMA</span></div>
+      </a>
+
+      <a class="partner-card partner-card-compact" href="techvee-hosting.html#backup">
+        <div class="partner-name">Infomaniak</div>
+        <div class="partner-tagline">Swiss backup &amp; storage</div>
+        <p class="partner-desc">Offsite backup, S3 object storage and kDrive from Switzerland's largest independent hosting company. I set it up, monitor it, and invoice it in CHF.</p>
+        <div class="partner-badges"><span class="partner-badge">Swiss Backup</span><span class="partner-badge">100% renewable</span></div>
+      </a>
 
     </div>
     <div class="partners-footer">
-      <p><strong>Not sure which cloud platform is right for you?</strong> Whether you need Microsoft Azure's Swiss regions for M365 workloads, Exoscale for scalable infrastructure without AWS lock-in, or SafeSwissCloud for regulated industry compliance — I can assess your requirements and recommend the right fit. Sometimes the answer is a combination of all three.</p>
+      <p><strong>Not sure which cloud is right for you?</strong> Azure's Swiss regions for M365 workloads, Exoscale for scalable infrastructure, SafeSwissCloud for regulated compliance, Infomaniak for backup and storage — I assess your requirements and recommend the fit. Often it's a combination.</p>
     </div>
   </div>
 </section>
@@ -639,8 +626,8 @@ footer{background:#0B1120;color:rgba(255,255,255,0.45);padding:48px 0;font-size:
     <div class="hosting-inner">
       <div>
         <div class="eyebrow">Swiss web hosting</div>
-        <div class="sec-title">Managed hosting,<br>entirely in Switzerland.</div>
-        <p style="color:var(--grey);font-size:15px;line-height:1.72;margin-bottom:20px;">All sites I host run on Novatrend's Swiss infrastructure. Your data never leaves Switzerland, and I manage everything — SSL, backups, WordPress updates — so you don't have to think about it.</p>
+        <div class="sec-title">Hosting and backup,<br>entirely in Switzerland.</div>
+        <p style="color:var(--grey);font-size:15px;line-height:1.72;margin-bottom:20px;">Websites run on Novatrend's Swiss infrastructure; offsite backups go to Infomaniak's Swiss datacentres. Your data never leaves Switzerland, and I manage everything — SSL, updates, backup monitoring, restore tests — so you don't have to think about it.</p>
         <p style="color:var(--grey);font-size:14px;line-height:1.65;"><strong style="color:var(--dark);">Ideal for:</strong> Swiss SMBs, expat business owners, and freelancers who want a reliable, locally-hosted web presence without the technical overhead.</p>
       </div>
       <div class="hosting-tiers">
@@ -664,6 +651,13 @@ footer{background:#0B1120;color:rgba(255,255,255,0.45);padding:48px 0;font-size:
             <p>Everything above + same-day support &amp; monthly check-in call</p>
           </div>
           <div class="hosting-price">CHF 55<span class="hosting-note">/mo</span></div>
+        </div>
+        <div class="hosting-tier">
+          <div class="hosting-tier-info">
+            <h4>Swiss Offsite Backup</h4>
+            <p>Servers, M365 or NAS backed up to Infomaniak Swiss Backup — monitored &amp; restore-tested</p>
+          </div>
+          <div class="hosting-price" style="font-size:15px;">per TB<span class="hosting-note">, quoted</span></div>
         </div>
         <div class="hosting-tier" style="background:var(--offwhite);">
           <div class="hosting-tier-info">
@@ -730,15 +724,15 @@ footer{background:#0B1120;color:rgba(255,255,255,0.45);padding:48px 0;font-size:
       </div>
       <div class="blog-card">
         <span class="blog-tag">AI &amp; Copilot</span>
-        <h3>Microsoft Copilot for Swiss SMBs: what you actually need to know</h3>
-        <p>Copilot is already in your M365 plan — but deploying it safely in a Swiss business context takes more than just switching it on.</p>
-        <a href="techvee-blog.html" class="blog-read">Read more →</a>
+        <h3>Copilot Cowork is GA — and the bill changes on 1 July</h3>
+        <p>Copilot Cowork is now billed on usage. How the pricing works, what changes on 1 July, and how to keep the costs under control.</p>
+        <a href="techvee-blog-copilot-cowork-pricing.html" class="blog-read">Read more →</a>
       </div>
       <div class="blog-card">
         <span class="blog-tag">Security</span>
         <h3>The 5 M365 security settings Swiss SMBs almost always have wrong</h3>
         <p>A quick self-audit checklist that takes 20 minutes and catches the most common configuration mistakes I see across Swiss tenants.</p>
-        <a href="techvee-blog.html" class="blog-read">Read more →</a>
+        <span class="blog-read" style="color:var(--grey);">Coming soon</span>
       </div>
     </div>
   </div>
