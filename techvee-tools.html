@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Free tools for Swiss businesses: a Microsoft 365 security &amp; nDSG readiness check, a Microsoft 365 licence advisor with CHF prices, and a retainer-vs-hire cost calculator. No sign-up.">
+<meta name="author" content="Paul Shadwell">
+<link rel="canonical" href="https://techvee.ch/techvee-tools.html">
+<meta name="theme-color" content="#111827">
+<meta name="robots" content="index,follow">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="favicon.svg">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Techvee GmbH">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="Free IT Tools for Swiss Businesses — Techvee GmbH">
+<meta property="og:description" content="Check your Microsoft 365 security &amp; nDSG readiness, find the right M365 licence in CHF, and see what IT support really costs. Free, no sign-up.">
+<meta property="og:url" content="https://techvee.ch/techvee-tools.html">
+<meta property="og:image" content="https://techvee.ch/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Free IT Tools for Swiss Businesses — Techvee GmbH">
+<meta name="twitter:description" content="Check your Microsoft 365 security &amp; nDSG readiness, find the right M365 licence in CHF, and see what IT support really costs. Free, no sign-up.">
+<meta name="twitter:image" content="https://techvee.ch/og-image.png">
+<script>document.documentElement.className+=" js";</script>
+
+<title>Free IT Tools for Swiss Businesses &mdash; Techvee GmbH</title>
+<link rel="stylesheet" href="style.css">
+<style>
+/* ── tool chooser ── */
+.tool-nav{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-top:-44px;position:relative;z-index:2;}
+.tool-nav a{display:flex;gap:14px;align-items:flex-start;background:white;border:1px solid var(--border);border-radius:14px;padding:20px 22px;text-decoration:none;color:inherit;box-shadow:0 8px 24px rgba(17,24,39,0.08);transition:transform .15s,box-shadow .15s;}
+.tool-nav a:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(29,172,232,0.14);}
+.tool-nav .tn-icon{width:40px;height:40px;border-radius:9px;background:var(--brand-light);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.tool-nav .tn-icon svg{width:22px;height:22px;color:var(--brand);}
+.tool-nav h3{font-size:14px;font-weight:600;color:var(--dark);margin-bottom:3px;}
+.tool-nav p{font-size:12.5px;color:var(--grey);line-height:1.5;}
+/* ── tool shell ── */
+.tool{scroll-margin-top:90px;}
+.tool-head{max-width:720px;margin-bottom:32px;}
+.tool-head .sec-sub{margin-bottom:0;}
+.tool-card{background:white;border:1px solid var(--border);border-radius:16px;padding:32px;}
+.tool-layout{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:start;}
+.tool-results{position:sticky;top:90px;}
+.results-card{background:var(--dark);color:white;border-radius:16px;padding:28px;}
+.results-card h4{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.5);margin-bottom:10px;}
+.results-total{font-family:'Playfair Display',serif;font-size:40px;font-weight:700;color:var(--brand);line-height:1.1;}
+.results-total small{font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:rgba(255,255,255,.55);margin-left:6px;}
+.results-rows{margin:18px 0 6px;}
+.results-row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.08);font-size:13.5px;}
+.results-row:last-child{border-bottom:none;}
+.results-row span:first-child{color:rgba(255,255,255,.6);}
+.results-row span:last-child{font-weight:600;text-align:right;}
+.results-row.total span{color:white;font-weight:700;}
+.results-note{font-size:11.5px;color:rgba(255,255,255,.42);line-height:1.6;margin-top:14px;}
+.results-cta{display:block;text-align:center;margin-top:18px;padding:12px;border-radius:7px;background:var(--brand);color:white;font-weight:600;font-size:14px;text-decoration:none;}
+.results-cta:hover{background:var(--brand-dark);}
+.results-cta.secondary{background:rgba(255,255,255,.08);margin-top:10px;}
+.results-cta.secondary:hover{background:rgba(255,255,255,.14);}
+/* ── quiz ── */
+.quiz-progress{height:5px;background:var(--offwhite);border-radius:3px;overflow:hidden;margin-bottom:24px;}
+.quiz-progress-bar{height:100%;background:var(--brand);width:0;transition:width .3s;}
+.quiz-q h3{font-family:'Playfair Display',serif;font-size:22px;color:var(--dark);margin-bottom:8px;line-height:1.3;}
+.quiz-q p{font-size:14px;color:var(--grey);line-height:1.65;margin-bottom:22px;}
+.quiz-opt{display:flex;gap:12px;align-items:center;border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:10px;cursor:pointer;font-size:14.5px;color:var(--text);transition:border-color .15s,background .15s;}
+.quiz-opt:hover{border-color:var(--brand);}
+.quiz-opt.sel{border-color:var(--brand);background:var(--brand-light);}
+.quiz-opt .dot{width:18px;height:18px;border-radius:50%;border:2px solid var(--border);flex-shrink:0;position:relative;}
+.quiz-opt.sel .dot{border-color:var(--brand);}
+.quiz-opt.sel .dot::after{content:'';position:absolute;inset:3px;border-radius:50%;background:var(--brand);}
+.quiz-opt input{position:absolute;opacity:0;width:0;height:0;}
+.quiz-nav{display:flex;align-items:center;justify-content:space-between;margin-top:22px;gap:12px;}
+.quiz-nav .counter{font-size:13px;color:var(--grey);}
+.quiz-nav .btn-primary,.quiz-nav .btn-outline{padding:11px 20px;font-size:14px;cursor:pointer;font-family:'Inter',sans-serif;}
+.quiz-nav button:disabled{opacity:.45;cursor:not-allowed;}
+.quiz-shake{animation:shake .35s ease;}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.score-ring{width:150px;height:150px;border-radius:50%;margin:0 auto 14px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:conic-gradient(var(--brand) calc(var(--pct)*1%),rgba(255,255,255,.1) 0);position:relative;}
+.score-ring::before{content:'';position:absolute;inset:11px;border-radius:50%;background:var(--dark);}
+.score-ring strong,.score-ring span{position:relative;}
+.score-ring strong{font-family:'Playfair Display',serif;font-size:42px;color:white;line-height:1;}
+.score-ring span{font-size:11px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.06em;margin-top:4px;}
+.grade{font-size:15px;font-weight:600;text-align:center;margin-bottom:6px;}
+.grade-desc{font-size:13px;color:rgba(255,255,255,.6);text-align:center;line-height:1.6;margin-bottom:18px;}
+.recs{list-style:none;}
+.recs li{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-top:1px solid rgba(255,255,255,.08);font-size:13px;line-height:1.55;color:rgba(255,255,255,.8);}
+.recs .sev{width:20px;height:20px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;margin-top:1px;}
+.recs .sev.high{background:#DC2626;color:white;}
+.recs .sev.med{background:#F59E0B;color:#111;}
+.recs strong{display:block;color:white;}
+/* ── advisor ── */
+.toggle-row{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:12px 0;border-bottom:1px solid var(--border);}
+.toggle-row:last-of-type{border-bottom:none;}
+.toggle-row .tl{font-size:14px;color:var(--text);line-height:1.4;}
+.toggle-row .tl small{display:block;font-size:12px;color:var(--grey);}
+.switch{position:relative;width:44px;height:24px;flex-shrink:0;}
+.switch input{opacity:0;width:0;height:0;position:absolute;}
+.switch .sl{position:absolute;inset:0;background:#D1D5DB;border-radius:24px;cursor:pointer;transition:background .2s;}
+.switch .sl::before{content:'';position:absolute;width:18px;height:18px;left:3px;top:3px;background:white;border-radius:50%;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.2);}
+.switch input:checked + .sl{background:var(--brand);}
+.switch input:checked + .sl::before{transform:translateX(20px);}
+.switch input:focus-visible + .sl{outline:2px solid var(--brand);outline-offset:2px;}
+.group-title{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--brand);margin:22px 0 6px;}
+.group-title:first-child{margin-top:0;}
+.range-wrap{display:flex;align-items:center;gap:14px;}
+.range-wrap input[type=range]{flex:1;accent-color:var(--brand);}
+.range-val{min-width:64px;text-align:right;font-weight:700;color:var(--dark);font-size:15px;}
+.plan-name{font-family:'Playfair Display',serif;font-size:26px;color:white;margin-bottom:4px;}
+.plan-feats{list-style:none;margin:12px 0;}
+.plan-feats li{font-size:13px;color:rgba(255,255,255,.75);padding:6px 0;border-bottom:1px solid rgba(255,255,255,.07);display:flex;gap:8px;}
+.plan-feats li::before{content:'✓';color:#7DD3FC;font-weight:700;flex-shrink:0;}
+.plan-feats li.no{color:rgba(255,255,255,.45);}
+.plan-feats li.no::before{content:'–';color:rgba(255,255,255,.3);}
+.plan-warn{font-size:12.5px;line-height:1.55;color:#FDE68A;background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.3);border-radius:8px;padding:10px 12px;margin-top:12px;}
+/* ── calculator ── */
+.bars{margin:16px 0 4px;}
+.bar{margin-bottom:14px;}
+.bar .lbl{display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px;}
+.bar .lbl span:first-child{color:rgba(255,255,255,.7);}
+.bar .lbl span:last-child{font-weight:700;color:white;}
+.bar .track{height:12px;background:rgba(255,255,255,.08);border-radius:6px;overflow:hidden;}
+.bar .fill{height:100%;border-radius:6px;background:rgba(255,255,255,.35);width:0;transition:width .4s;}
+.bar.best .fill{background:var(--brand);}
+.bar.best .lbl span:last-child{color:var(--brand);}
+.bar.theo{opacity:.55;}
+.bar.theo .fill{background:repeating-linear-gradient(45deg,rgba(255,255,255,.35) 0 6px,rgba(255,255,255,.15) 6px 12px);}
+/* ── report form ── */
+.report-form{border-top:1px solid var(--border);margin-top:28px;padding-top:24px;}
+.report-form h4{font-size:15px;font-weight:600;color:var(--dark);margin-bottom:4px;}
+.report-form p{font-size:13px;color:var(--grey);margin-bottom:16px;line-height:1.55;}
+.report-form .form-row{grid-template-columns:1fr 1fr 1fr;}
+.report-form .form-group{margin-bottom:12px;}
+.report-form .form-submit{width:auto;padding:11px 22px;font-size:14px;}
+.report-ok{font-size:14px;color:#047857;font-weight:600;margin-top:10px;}
+.hint{font-size:12px;color:var(--grey);line-height:1.6;margin-top:16px;}
+@media (max-width:920px){
+  .tool-nav{grid-template-columns:1fr;margin-top:24px;}
+  .tool-layout{grid-template-columns:1fr;}
+  .tool-results{position:static;}
+  .report-form .form-row{grid-template-columns:1fr;}
+}
+@media (max-width:600px){.tool-card{padding:22px;}.results-total{font-size:32px;}}
+</style>
+</head>
+<body>
+<div id="site-nav"></div>
+
+<section class="page-hero"><div class="page-glow"></div><div class="container">
+<div class="hero-text">
+<div class="breadcrumb"><a href="index.html">Home</a><span>/</span>Free Tools</div>
+<h1>Free tools.<br><em>Honest answers.</em><br>No sign-up.</h1>
+<p class="page-hero-sub">Three small tools I built to answer the questions Swiss business owners ask me most often. Use them as much as you like — the results stay in your browser unless you ask me to email them to you.</p>
+<div class="page-tags"><span class="page-tag">Microsoft 365</span><span class="page-tag">nDSG / FADP</span><span class="page-tag">CHF prices</span><span class="page-tag">No tracking</span></div>
+</div>
+</div></section>
+
+<section class="section" style="padding-top:0;"><div class="container">
+  <nav class="tool-nav" aria-label="Choose a tool">
+    <a href="#security-check">
+      <div class="tn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></div>
+      <div><h3>M365 Security &amp; nDSG Readiness Check</h3><p>12 questions, 3 minutes. Get a score and a prioritised fix list.</p></div>
+    </a>
+    <a href="#licence-advisor">
+      <div class="tn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1"/><path d="M9 11h6M9 15h6"/></svg></div>
+      <div><h3>Microsoft 365 Licence Advisor</h3><p>Which plan fits, what it costs in CHF — Copilot included.</p></div>
+    </a>
+    <a href="#retainer-calculator">
+      <div class="tn-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><path d="M7 17V10M12 17V5M17 17v-8"/></svg></div>
+      <div><h3>Retainer vs. In-house Calculator</h3><p>What senior IT support really costs per month — retainer, ad-hoc, or hiring.</p></div>
+    </a>
+  </nav>
+</div></section>
+
+<!-- ══ TOOL 1: SECURITY CHECK ══ -->
+<section class="section alt tool" id="security-check"><div class="container">
+  <div class="tool-head">
+    <div class="eyebrow">Tool 1</div>
+    <div class="sec-title">Microsoft 365 Security &amp; nDSG Readiness Check</div>
+    <p class="sec-sub">Twelve yes / partly / no questions covering the settings I check first in any Swiss tenant — identity, devices, data, and the Swiss-specific points the nDSG and the CLOUD Act raise. Answer frankly; nobody sees your answers unless you choose to email them to yourself.</p>
+  </div>
+  <div class="tool-layout">
+    <div class="tool-card" id="sq-card">
+      <div class="quiz-progress"><div class="quiz-progress-bar" id="sq-bar"></div></div>
+      <div id="sq-question" class="quiz-q" aria-live="polite"></div>
+      <div class="quiz-nav">
+        <button type="button" class="btn-outline" id="sq-prev">&larr; Previous</button>
+        <span class="counter" id="sq-counter">1 / 12</span>
+        <button type="button" class="btn-primary" id="sq-next">Next &rarr;</button>
+      </div>
+    </div>
+    <div class="tool-results">
+      <div class="results-card" id="sq-results">
+        <h4>Your readiness score</h4>
+        <p style="font-size:14px;color:rgba(255,255,255,.6);line-height:1.65;">Answer the twelve questions and your score, grade and a prioritised list of fixes appear here. Nothing is sent anywhere.</p>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<!-- ══ TOOL 2: LICENCE ADVISOR ══ -->
+<section class="section tool" id="licence-advisor"><div class="container">
+  <div class="tool-head">
+    <div class="eyebrow">Tool 2</div>
+    <div class="sec-title">Microsoft 365 Licence Advisor</div>
+    <p class="sec-sub">Tell it what your organisation needs and it recommends the lowest plan that actually covers it, with Microsoft's Swiss list prices in CHF. It will also tell you what the recommended plan does <em>not</em> include, which is where most licensing surprises come from.</p>
+  </div>
+  <div class="tool-layout">
+    <div class="tool-card">
+      <div class="group-title">Your organisation</div>
+      <div class="form-group">
+        <label for="la-users">Number of users: <span class="range-val" id="la-users-val">25</span></label>
+        <div class="range-wrap"><input type="range" id="la-users" min="1" max="1000" value="25" step="1"></div>
+      </div>
+      <div class="form-group">
+        <label for="la-copilot">Users who need Microsoft 365 Copilot (the full AI assistant in Word, Excel, Outlook, Teams): <span class="range-val" id="la-copilot-val">0</span></label>
+        <div class="range-wrap"><input type="range" id="la-copilot" min="0" max="1000" value="0" step="1"></div>
+      </div>
+
+      <div class="group-title">Productivity</div>
+      <div class="toggle-row"><div class="tl">Desktop Office apps (Word, Excel, PowerPoint installed on PCs/Macs)<small>Web and mobile versions are in every plan</small></div><label class="switch"><input type="checkbox" id="la-desktop" checked><span class="sl"></span></label></div>
+      <div class="toggle-row"><div class="tl">Teams Phone (landline calling from Teams)</div><label class="switch"><input type="checkbox" id="la-phone"><span class="sl"></span></label></div>
+      <div class="toggle-row"><div class="tl">Power BI Pro for reporting and dashboards</div><label class="switch"><input type="checkbox" id="la-pbi"><span class="sl"></span></label></div>
+
+      <div class="group-title">Security &amp; device management</div>
+      <div class="toggle-row"><div class="tl">Conditional Access &amp; enforced MFA policies<small>Entra ID P1 — the baseline I recommend for every Swiss business</small></div><label class="switch"><input type="checkbox" id="la-ca" checked><span class="sl"></span></label></div>
+      <div class="toggle-row"><div class="tl">Manage company PCs and phones (Intune)</div><label class="switch"><input type="checkbox" id="la-intune"><span class="sl"></span></label></div>
+      <div class="toggle-row"><div class="tl">Advanced email &amp; endpoint threat protection (Defender)</div><label class="switch"><input type="checkbox" id="la-defender"><span class="sl"></span></label></div>
+      <div class="toggle-row"><div class="tl">Data loss prevention &amp; sensitivity labels<small>Relevant for nDSG obligations around personal data</small></div><label class="switch"><input type="checkbox" id="la-dlp"><span class="sl"></span></label></div>
+      <div class="toggle-row"><div class="tl">Just-in-time admin access (PIM) &amp; risk-based sign-in<small>Entra ID P2 — typically FINMA-regulated or larger firms</small></div><label class="switch"><input type="checkbox" id="la-pim"><span class="sl"></span></label></div>
+      <div class="toggle-row"><div class="tl">Advanced compliance: eDiscovery Premium, insider risk, records management</div><label class="switch"><input type="checkbox" id="la-compliance"><span class="sl"></span></label></div>
+      <p class="hint">Prices are Microsoft Switzerland list prices for annual commitment, per user per month, excluding 8.1% MwSt, as published in October 2026. Prices change — treat the total as an indication and ask me for a current CSP quote.</p>
+    </div>
+    <div class="tool-results">
+      <div class="results-card" id="la-results"></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- ══ TOOL 3: RETAINER CALCULATOR ══ -->
+<section class="section alt tool" id="retainer-calculator"><div class="container">
+  <div class="tool-head">
+    <div class="eyebrow">Tool 3</div>
+    <div class="sec-title">Retainer vs. in-house: what does senior IT support really cost?</div>
+    <p class="sec-sub">Most Swiss SMBs need a few hours of senior IT attention a week, not a full-time person. This compares four ways of covering those hours — two from me, two by hiring. The retainer and ad-hoc figures are my published prices; the hiring figures are yours to adjust.</p>
+  </div>
+  <div class="tool-layout">
+    <div class="tool-card">
+      <div class="form-group">
+        <label for="rc-hours">Senior IT help you need per week: <span class="range-val" id="rc-hours-val">3 h</span></label>
+        <div class="range-wrap"><input type="range" id="rc-hours" min="1" max="20" value="3" step="0.5"></div>
+      </div>
+      <div class="group-title">If you hired instead</div>
+      <div class="form-group">
+        <label for="rc-salary">Annual salary for an experienced M365 / Azure administrator in Canton Zurich (CHF)</label>
+        <input type="number" id="rc-salary" value="110000" min="40000" max="300000" step="1000">
+      </div>
+      <div class="form-group">
+        <label for="rc-oncost">Employer on-costs (AHV/IV/EO, ALV, BVG, UVG, admin) as % of salary</label>
+        <input type="number" id="rc-oncost" value="18" min="0" max="50" step="1">
+      </div>
+      <div class="toggle-row" style="border:none;padding-top:0;"><div class="tl">I could realistically hire an experienced person at exactly this percentage<small>Off: the part-time figure is shown for reference but not counted as a realistic option</small></div><label class="switch"><input type="checkbox" id="rc-parttime"><span class="sl"></span></label></div>
+      <p class="hint">Retainer: CHF 600 per month includes 5 hours; extra hours CHF 130. Ad-hoc: CHF 150 per hour, 1-hour minimum. Both exclude MwSt. A 42-hour week is used for the part-time percentage. Finding an experienced person willing to work 5–20% is, in practice, rare — which is why the full-time figure is the realistic comparison for most firms.</p>
+    </div>
+    <div class="tool-results">
+      <div class="results-card" id="rc-results"></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="cta-section" id="contact"><div class="container" style="text-align:center;max-width:680px;">
+  <div class="eyebrow">Want a second opinion on the results?</div>
+  <h2 style="font-family:'Playfair Display',serif;font-size:34px;color:var(--dark);margin-bottom:12px;">The first 30 minutes is free.</h2>
+  <p style="color:var(--grey);font-size:16px;line-height:1.7;margin-bottom:28px;">Bring your score or your licence estimate and I'll tell you what I'd actually do — including if the answer is "nothing, you're fine".</p>
+  <a href="techvee-contact.html" class="btn-primary" data-calendly>Book a free 30-minute call</a>
+</div></section>
+
+<div id="site-footer"></div>
+<script src="components.js"></script>
+<script src="tools.js"></script>
+</body>
+</html>

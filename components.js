@@ -21,6 +21,7 @@ const NAV_HTML = `
       <li><a href="techvee-swiss-it-compliance.html">Swiss IT &amp; Compliance</a></li>
       <li><a href="techvee-ai-copilot.html">AI &amp; Copilot</a></li>
       <li><a href="techvee-hosting.html">Web Hosting</a></li>
+      <li><a href="techvee-tools.html">Free Tools</a></li>
       <li><a href="techvee-about.html">About Paul</a></li>
       <li><a href="techvee-blog.html">Blog</a></li>
     </ul>
@@ -52,11 +53,13 @@ const FOOTER_HTML = `
         <a href="techvee-ai-copilot.html">AI &amp; Automation</a>
         <a href="techvee-swiss-it-compliance.html">Exoscale, SafeSwissCloud &amp; Infomaniak</a>
         <a href="techvee-hosting.html">Web Hosting &amp; Swiss Backup</a>
+        <a href="techvee-tools.html#security-check">nDSG Readiness Check</a>
       </div>
       <div class="footer-col">
         <h4>Company</h4>
         <a href="techvee-about.html">About Paul</a>
         <a href="techvee-blog.html">Blog</a>
+        <a href="techvee-tools.html">Free Tools</a>
         <a href="techvee-contact.html">Contact</a>
         <address style="margin-top:8px;font-style:normal;">Techvee GmbH<br>Sonnenbergstrasse 11b<br>8488 Turbenthal, Switzerland</address>
         <a href="mailto:info@techvee.com">info@techvee.com</a>

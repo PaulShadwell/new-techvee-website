@@ -36,16 +36,7 @@
 .contact-form{background:white;border:1px solid var(--border);border-radius:16px;padding:36px;}
 .contact-form h2{font-family:'Playfair Display',serif;font-size:24px;color:var(--dark);margin-bottom:6px;}
 .contact-form .intro{font-size:14px;color:var(--grey);margin-bottom:28px;line-height:1.6;}
-.form-group{margin-bottom:20px;}
-.form-group label{display:block;font-size:13px;font-weight:600;color:var(--dark);margin-bottom:6px;}
-.form-group input,.form-group select,.form-group textarea{width:100%;padding:11px 14px;border:1px solid var(--border);border-radius:7px;font-size:14px;font-family:'Inter',sans-serif;color:var(--text);background:white;transition:border-color 0.15s;}
-.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--brand);}
-.form-group textarea{resize:vertical;min-height:120px;}
-.form-group select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236B7280' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-.form-submit{width:100%;padding:14px;background:var(--brand);color:white;border:none;border-radius:7px;font-size:15px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;}
-.form-submit:hover{background:var(--brand-dark);}
-.form-note{font-size:12px;color:var(--grey);text-align:center;margin-top:12px;line-height:1.55;}
+
 .c-detail{display:flex;gap:14px;margin-bottom:22px;align-items:flex-start;}
 .c-icon{width:42px;height:42px;background:var(--brand-light);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
 .c-detail h4{font-size:13px;font-weight:600;color:var(--dark);margin-bottom:3px;}
@@ -54,16 +45,8 @@
 .expect{list-style:none;margin-top:28px;}
 .expect li{display:flex;gap:10px;margin-bottom:12px;font-size:14px;color:var(--grey);align-items:flex-start;line-height:1.55;}
 .expect li::before{content:'✓';color:var(--brand);font-weight:700;flex-shrink:0;}
-.form-group input.invalid,.form-group textarea.invalid,.form-group select.invalid{border-color:#DC2626;background:#FEF2F2;}
-.field-msg{display:block;font-size:12px;color:#DC2626;margin-top:5px;}
-.form-error{font-size:13px;color:#DC2626;text-align:center;margin-top:12px;font-weight:500;}
-.form-submit:disabled{opacity:0.6;cursor:not-allowed;}
-.form-success{background:var(--brand-light);border:1px solid rgba(29,172,232,0.3);border-radius:14px;padding:32px;text-align:center;animation:fadeUp .4s ease;}
-.form-success-icon{width:54px;height:54px;border-radius:50%;background:var(--brand);color:#fff;font-size:28px;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;}
-.form-success h3{font-family:'Playfair Display',serif;font-size:22px;color:var(--dark);margin-bottom:8px;}
-.form-success p{font-size:14px;color:var(--grey);line-height:1.65;}
-.form-success a{color:var(--brand);text-decoration:none;}
-@keyframes fadeUp{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:none;}}
+
+
 .booking-head{text-align:center;max-width:600px;margin:0 auto 32px;}
 .booking-head .sec-sub{margin:0 auto;text-align:center;max-width:100%;}
 .calendly-card{border:1px solid var(--border);border-radius:16px;overflow:hidden;box-shadow:0 10px 30px rgba(17,24,39,0.06);background:#fff;}
@@ -111,19 +94,13 @@
 <div class="contact-form">
 <h2>Send me a message</h2>
 <p class="intro">Fill in the form and I'll get back to you the same business day. Prefer email? <a href="mailto:info@techvee.com" style="color:var(--brand);">info@techvee.com</a></p>
-<!-- ════════════════════════════════════════════════════════════════════
-     TO ACTIVATE THIS FORM:
-     1. Sign up free at https://formspree.io
-     2. Create a form and copy your endpoint ID (looks like: xayzwlbq)
-     3. Replace YOUR_FORMSPREE_ID in the action URL below with it.
-     Until then the form falls back to opening the visitor's email client.
-     ════════════════════════════════════════════════════════════════════ -->
+<!-- Submits to api/send.php on this server (Swiss-hosted) — no third-party form service. -->
 <div id="form-success" class="form-success" hidden>
   <div class="form-success-icon">✓</div>
   <h3>Thank you — message sent.</h3>
   <p>I've received your enquiry and will reply personally within one business day. If it's urgent, email me directly at <a href="mailto:info@techvee.com">info@techvee.com</a>.</p>
 </div>
-<form id="contact-form" action="https://formspree.io/f/xkolrjyr" method="POST" novalidate>
+<form id="contact-form" action="api/send.php" method="POST" novalidate>
 <div class="form-row">
 <div class="form-group"><label for="fname">First name *</label><input type="text" id="fname" name="first_name" required autocomplete="given-name" placeholder="Hans"></div>
 <div class="form-group"><label for="lname">Last name *</label><input type="text" id="lname" name="last_name" required autocomplete="family-name" placeholder="Muster"></div>
@@ -142,7 +119,7 @@
 <option>Something else</option>
 </select></div>
 <div class="form-group"><label for="message">Tell me more *</label><textarea id="message" name="message" required placeholder="A brief description of what you're dealing with..."></textarea></div>
-<input type="hidden" name="_subject" value="New enquiry from techvee.ch">
+<input type="hidden" name="kind" value="contact">
 <!-- Honeypot anti-spam field — hidden from humans -->
 <div aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;"><label>Leave this empty<input type="text" name="_gotcha" tabindex="-1" autocomplete="off"></label></div>
 <button type="submit" class="form-submit">Send message &rarr;</button>
@@ -226,15 +203,6 @@
     successBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
   }
 
-  function mailtoFallback() {
-    var name = (document.getElementById('fname').value + ' ' + document.getElementById('lname').value).trim();
-    var body = 'Name: ' + name +
-      '\nCompany: ' + document.getElementById('company').value +
-      '\nTopic: ' + document.getElementById('topic').value +
-      '\n\n' + document.getElementById('message').value;
-    window.location.href = 'mailto:info@techvee.com?subject=' +
-      encodeURIComponent('New enquiry from techvee.ch') + '&body=' + encodeURIComponent(body);
-  }
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -243,13 +211,6 @@
       errorBox.hidden = false;
       var firstBad = form.querySelector('.invalid');
       if (firstBad) firstBad.focus();
-      return;
-    }
-
-    // If Formspree isn't configured yet, fall back to the visitor's email client.
-    if (form.action.indexOf('YOUR_FORMSPREE_ID') !== -1) {
-      mailtoFallback();
-      showSuccess();
       return;
     }
 
@@ -263,8 +224,11 @@
       body: new FormData(form),
       headers: { Accept: 'application/json' }
     }).then(function (res) {
-      if (res.ok) { showSuccess(); }
-      else { errorBox.textContent = 'Something went wrong. Please email info@techvee.com directly.'; errorBox.hidden = false; }
+      if (res.ok) { showSuccess(); return; }
+      return res.json().catch(function () { return {}; }).then(function (j) {
+        errorBox.textContent = (j && j.error) ? j.error : 'Something went wrong. Please email info@techvee.com directly.';
+        errorBox.hidden = false;
+      });
     }).catch(function () {
       errorBox.textContent = 'Network error. Please email info@techvee.com directly.';
       errorBox.hidden = false;

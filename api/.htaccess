@@ -1,0 +1,5 @@
+# Only send.php is meant to be called; nothing else lives here.
+<FilesMatch "^(?!send\.php$).*">
+Require all denied
+</FilesMatch>
+Options -Indexes
