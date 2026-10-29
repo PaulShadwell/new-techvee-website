@@ -77,6 +77,21 @@ To preview the built output locally: `node build/inline-components.js` in a scra
 - Analytics is self-hosted **Umami** (cookieless, no personal data, honours Do-Not-Track),
   loaded from `components.js`. There is deliberately **no cookie banner**.
 
+## Forms & the free-tools page
+
+- **`api/send.php`** handles the contact form and the "email me my results" forms on
+  `techvee-tools.html`. It runs on the Novatrend server and uses the server's own
+  mail system, so no third-party form service (Formspree is gone). Config constants
+  are at the top of the file. Sends **as `noreply@techvee.ch`** — never as
+  `@techvee.com`, whose SPF is locked to Microsoft 365.
+- **DNS, one-off:** add a TXT record on `techvee.ch`:
+  `v=spf1 include:_spf.tophost.ch ~all` (the web server's IP is in that range).
+  Optionally create the mailbox `noreply@techvee.ch` in cPanel so bounces have a home.
+- **`tools.js`** holds the three tools. Microsoft CHF list prices live in the
+  `PLANS` table with a `PRICE_DATE` string — update both when Microsoft changes
+  prices (last checked October 2026). Retainer/ad-hoc rates are constants at the
+  top of the calculator section and must match `techvee-services.html`.
+
 ## Notes
 
 - **Security:** the workflow uses **FTPS** (FTP over TLS). If your Novatrend plan
