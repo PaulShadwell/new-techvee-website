@@ -6,6 +6,9 @@
 <meta name="description" content="Book a free 30-minute IT consultation with Paul Shadwell at Techvee GmbH. Honest advice on Microsoft 365, Azure, AI and Swiss compliance — same-business-day response.">
 <meta name="author" content="Paul Shadwell">
 <link rel="canonical" href="https://techvee.ch/techvee-contact.html">
+<link rel="alternate" hreflang="en" href="https://techvee.ch/techvee-contact.html">
+<link rel="alternate" hreflang="de-CH" href="https://techvee.ch/de/kontakt.html">
+<link rel="alternate" hreflang="x-default" href="https://techvee.ch/techvee-contact.html">
 <meta name="theme-color" content="#111827">
 <meta name="robots" content="index,follow">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -14,6 +17,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Techvee GmbH">
 <meta property="og:locale" content="en_GB">
+<meta property="og:locale:alternate" content="de_CH">
 <meta property="og:title" content="Contact — Techvee GmbH">
 <meta property="og:description" content="Book a free 30-minute IT consultation with Paul Shadwell at Techvee GmbH. Honest advice on Microsoft 365, Azure, AI and Swiss compliance — same-business-day response.">
 <meta property="og:url" content="https://techvee.ch/techvee-contact.html">
@@ -29,7 +33,6 @@
 
 <title>Contact &mdash; Techvee GmbH</title>
 <link rel="stylesheet" href="style.css">
-<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 <style>
 .footer-col a,.footer-col p{display:block;color:rgba(255,255,255,0.38);font-size:13px;text-decoration:none;margin-bottom:7px;}
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
@@ -69,23 +72,15 @@
 <p class="page-hero-sub">The first 30 minutes is completely free. Tell me what you're dealing with and I'll tell you honestly whether I can help, what it would take, and what it would cost. No sales pitch.</p>
 </div></section>
 
-<!-- ════════════════════════════════════════════════════════════════════
-     CALENDLY BOOKING EMBED
-     Replace the data-url below with your real Calendly scheduling link,
-     e.g. https://calendly.com/paul-shadwell/30min
-     The query params keep the brand colour and hide the cookie banner.
-     ════════════════════════════════════════════════════════════════════ -->
 <section class="section" style="padding-bottom:40px;"><div class="container">
   <div class="booking-head">
     <div class="eyebrow" style="text-align:center;">Book directly</div>
     <div class="sec-title" style="text-align:center;">Grab a free 30-minute call.</div>
     <p class="sec-sub">Pick a time that works for you below — it drops straight into my calendar, no back-and-forth. Not sure yet? Send a message instead, further down.</p>
   </div>
-  <div class="calendly-card">
-    <div class="calendly-inline-widget"
-         data-url="https://calendly.com/paul-shadwell-techvee/30min?hide_gdpr_banner=1&primary_color=1dace8"></div>
-  </div>
-  <p class="booking-fallback">Calendar not loading? <a href="https://calendly.com/paul-shadwell-techvee/30min" target="_blank" rel="noopener">Open the booking page in a new tab →</a> or email <a href="mailto:info@techvee.com">info@techvee.com</a>.</p>
+  <!-- Booking calendar is injected by components.js (see BOOKING at the top of that file) -->
+  <div class="calendly-card" id="booking-embed"></div>
+  <p class="booking-fallback">Calendar not loading? <a href="https://calendly.com/paul-shadwell-techvee/30min" data-booking-url target="_blank" rel="noopener">Open the booking page in a new tab →</a> or email <a href="mailto:info@techvee.com">info@techvee.com</a>.</p>
 </div></section>
 
 <section class="section" style="padding-top:24px;"><div class="container">
@@ -156,7 +151,6 @@
 </div></div></section>
 <div id="site-footer"></div>
 <script src="components.js"></script>
-<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
 <script>
 (function () {
   var form = document.getElementById('contact-form');

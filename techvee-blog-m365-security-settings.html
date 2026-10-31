@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A 20-minute self-audit of the five Microsoft 365 settings I find misconfigured in nearly every Swiss small-business tenant — how to check each one, and how to fix it.">
+<meta name="author" content="Paul Shadwell">
+<link rel="canonical" href="https://techvee.ch/techvee-blog-m365-security-settings.html">
+<meta name="theme-color" content="#111827">
+<meta name="robots" content="index,follow">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="favicon.svg">
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Techvee GmbH">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="The 5 Microsoft 365 security settings Swiss SMBs almost always have wrong — Techvee GmbH">
+<meta property="og:description" content="A 20-minute self-audit of the five Microsoft 365 settings I find misconfigured in nearly every Swiss small-business tenant — how to check each one, and how to fix it.">
+<meta property="og:url" content="https://techvee.ch/techvee-blog-m365-security-settings.html">
+<meta property="og:image" content="https://techvee.ch/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The 5 Microsoft 365 security settings Swiss SMBs almost always have wrong — Techvee GmbH">
+<meta name="twitter:description" content="A 20-minute self-audit of the five Microsoft 365 settings I find misconfigured in nearly every Swiss small-business tenant — how to check each one, and how to fix it.">
+<meta name="twitter:image" content="https://techvee.ch/og-image.png">
+<script>document.documentElement.className+=" js";</script>
+
+<title>The 5 Microsoft 365 security settings Swiss SMBs almost always have wrong &mdash; Techvee GmbH</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.footer-col a,.footer-col p{display:block;color:rgba(255,255,255,0.38);font-size:13px;text-decoration:none;margin-bottom:7px;}
+.article-hero{background:var(--dark);padding:56px 0 64px;color:white;position:relative;overflow:hidden;}
+.art-glow{position:absolute;right:-80px;top:50%;transform:translateY(-50%);width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(29,172,232,0.12) 0%,transparent 65%);pointer-events:none;}
+.art-meta{display:flex;gap:14px;align-items:center;margin-bottom:20px;flex-wrap:wrap;}
+.art-cat{background:rgba(29,172,232,0.15);border:1px solid rgba(29,172,232,0.3);color:var(--brand);padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;}
+.art-date,.art-time{font-size:13px;color:rgba(255,255,255,0.4);}
+.article-hero h1{font-family:'Playfair Display',serif;font-size:40px;font-weight:700;line-height:1.18;color:white;max-width:760px;margin-bottom:18px;}
+.summary{font-size:16px;color:rgba(255,255,255,0.65);line-height:1.72;max-width:660px;}
+.art-layout{display:grid;grid-template-columns:1fr 300px;gap:56px;align-items:start;padding:64px 0;}
+.art-body h2{font-family:'Playfair Display',serif;font-size:26px;color:var(--dark);margin:36px 0 14px;}
+.art-body h3{font-size:17px;font-weight:600;color:var(--dark);margin:24px 0 10px;}
+.art-body p{font-size:15px;color:#374151;line-height:1.82;margin-bottom:18px;}
+.art-body ul{margin:0 0 18px 20px;}
+.art-body li{font-size:15px;color:#374151;line-height:1.78;margin-bottom:6px;}
+.art-body strong{color:var(--dark);}
+.callout{background:var(--brand-light);border:1px solid rgba(29,172,232,0.2);border-radius:10px;padding:20px 24px;margin:24px 0;}
+.callout p{margin:0;font-size:14px;color:var(--dark);}
+.step-box{background:var(--offwhite);border-radius:10px;padding:18px 22px;margin:14px 0;border-left:3px solid var(--brand);}
+.step-box h4{font-size:14px;font-weight:600;color:var(--dark);margin-bottom:5px;}
+.step-box p{font-size:13px;color:var(--grey);margin:0;}
+.sidebar{position:sticky;top:84px;}
+.s-card{background:var(--dark2);border-radius:14px;padding:28px;margin-bottom:18px;color:white;}
+.s-card h3{font-family:'Playfair Display',serif;font-size:18px;color:white;margin-bottom:10px;}
+.s-card p{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.65;margin-bottom:16px;}
+.s-card a{display:block;background:var(--brand);color:white;text-align:center;padding:11px;border-radius:7px;font-size:13px;font-weight:600;text-decoration:none;margin-bottom:8px;}
+.s-card a.ol{background:transparent;border:1px solid rgba(255,255,255,0.18);color:rgba(255,255,255,0.65);}
+.s-about{background:var(--offwhite);border:1px solid var(--border);border-radius:14px;padding:24px;}
+.s-about h3{font-size:16px;font-weight:600;color:var(--dark);margin-bottom:6px;}
+.s-about p{font-size:13px;color:var(--grey);line-height:1.65;margin-bottom:12px;}
+.s-about a{font-size:13px;font-weight:600;color:var(--brand);text-decoration:none;}
+
+@media (max-width:920px){.art-layout{grid-template-columns:1fr;gap:36px;padding:44px 0;}}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "The 5 Microsoft 365 security settings Swiss SMBs almost always have wrong",
+  "description": "A 20-minute self-audit of the five Microsoft 365 settings I find misconfigured in nearly every Swiss small-business tenant — how to check each one, and how to fix it.",
+  "image": "https://techvee.ch/og-image.png",
+  "author": {
+    "@type": "Person",
+    "name": "Paul Shadwell",
+    "url": "https://techvee.ch/techvee-about.html"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Techvee GmbH",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://techvee.ch/Techvee-logo.png"
+    }
+  },
+  "mainEntityOfPage": "https://techvee.ch/techvee-blog-m365-security-settings.html",
+  "datePublished": "2026-10-31",
+  "inLanguage": "en-GB"
+}
+</script>
+</head>
+<body>
+<div id="site-nav"></div>
+<section class="article-hero"><div class="art-glow"></div><div class="container">
+<div class="breadcrumb"><a href="index.html">Home</a><span>/</span><a href="techvee-blog.html">Blog</a><span>/</span>5 M365 Security Settings</div>
+<div class="art-meta"><span class="art-cat">Security</span><span class="art-date">October 2026</span><span class="art-time">7 min read</span></div>
+<h1>The 5 Microsoft 365 security settings Swiss SMBs almost always have wrong</h1>
+<p class="summary">Over the last few years I have looked inside a lot of Swiss SMB tenants. The same five things are wrong in nearly all of them &mdash; and none take more than an afternoon to fix. Here is how to check your own in about twenty minutes.</p>
+</div></section>
+
+<div style="background:white;"><div class="container"><div class="art-layout">
+<article class="art-body">
+<p>When a Swiss business asks me to look at their Microsoft 365 tenant, I don't start with a 200-point audit. I start with five settings. They are not exotic, they are not expensive to fix, and in my experience they are misconfigured in roughly four out of five small-business tenants &mdash; usually because the tenant was set up years ago by someone in a hurry and nobody has looked since.</p>
+<p>This is the self-audit version. You need a Global Administrator login and about twenty minutes. For each item I explain what I typically find, why it matters for a Swiss business in particular, how to check, and what the fix looks like.</p>
+<div class="callout"><p><strong>Prefer a guided version?</strong> The <a href="techvee-tools.html#security-check" style="color:var(--brand);">free M365 Security &amp; nDSG Readiness Check</a> on this site walks through these points and seven more, and gives you a score and a prioritised list. Nothing is sent anywhere unless you ask.</p></div>
+
+<h2>1. MFA is "on" but not actually enforced</h2>
+<p><strong>What I find:</strong> the owner is certain MFA is enabled. It is &mdash; for the three people who set it up themselves when prompted. Everyone else is still on password only, and legacy authentication protocols (IMAP, POP, SMTP AUTH, older Office clients) are still allowed, which bypasses MFA entirely even for the users who have it.</p>
+<p><strong>Why it matters:</strong> password-spray and credential-stuffing attacks against Microsoft 365 are constant and automated. Enforced MFA stops the vast majority of them. Under the nDSG you are expected to apply security measures appropriate to the risk; unenforced MFA is hard to defend as appropriate.</p>
+<div class="step-box"><h4>How to check</h4><p>Entra admin centre &rarr; Protection &rarr; Authentication methods &rarr; User registration details: look at the "MFA registered" column. Then Entra admin centre &rarr; Protection &rarr; Conditional Access: is there a policy that <em>requires</em> MFA for all users, and one that <em>blocks</em> legacy authentication? If the list is empty, nothing is enforced. If you have no Entra ID P1 (Business Basic/Standard), check Properties &rarr; Manage security defaults instead.</p></div>
+<div class="step-box"><h4>The fix</h4><p>With Business Premium or E3/E5: create two Conditional Access policies from Microsoft's templates &mdash; "Require MFA for all users" and "Block legacy authentication" &mdash; run them in report-only mode for a week, then switch them on. Without P1: turn on Security Defaults. Either way, exclude one documented break-glass account (see point 2).</p></div>
+
+<h2>2. Everyone who ever needed something is a Global Administrator</h2>
+<p><strong>What I find:</strong> six Global Admins in a fifteen-person company. The owner, the bookkeeper, a former IT supplier, an ex-employee whose account was never disabled, and a shared "info@" mailbox that someone made an admin to fix a calendar problem in 2021. All of them use their admin account for daily email.</p>
+<p><strong>Why it matters:</strong> an admin who reads email with a Global Admin account turns one phishing click into a full tenant compromise &mdash; every mailbox, every file, every setting. And if the only admin is one person and that person is locked out, so is the company.</p>
+<div class="step-box"><h4>How to check</h4><p>Entra admin centre &rarr; Roles &amp; admins &rarr; Global Administrator. Count the members. Then check whether each one also has a mailbox and licences assigned (they shouldn't).</p></div>
+<div class="step-box"><h4>The fix</h4><p>Two to four Global Admins maximum. Give each of them a separate, unlicensed admin account with no mailbox (for example <em>adm-paul@</em>) and keep their normal account as a plain user. Create one break-glass account with a very long password stored offline, excluded from Conditional Access, and alerted on when it signs in. Remove everyone else &mdash; most of them only need Exchange Administrator or Helpdesk Administrator, if anything.</p></div>
+
+<h2>3. "Anyone with the link" sharing is still the default</h2>
+<p><strong>What I find:</strong> SharePoint and OneDrive external sharing left at the Microsoft default of "Anyone", meaning every user can create links that work for anybody on the internet, forever, with no sign-in. Nobody knows how many of those links exist. Usually quite a few.</p>
+<p><strong>Why it matters:</strong> this is the most common way client data leaves Swiss companies, and it never shows up in a security log because nothing was "breached" &mdash; someone shared a folder with a supplier in 2023 and the link still works. For personal data this is exactly the uncontrolled disclosure the nDSG makes you responsible for.</p>
+<div class="step-box"><h4>How to check</h4><p>SharePoint admin centre &rarr; Policies &rarr; Sharing. If the SharePoint and OneDrive sliders sit at "Anyone", that is the finding. Also look at whether anonymous links have an expiry.</p></div>
+<div class="step-box"><h4>The fix</h4><p>Set the organisation level to "New and existing guests" (recipients must sign in or verify a code). If you genuinely need anonymous links for a specific site, allow them for that site only and force a 30-day expiry and view-only permission. Then run a sharing report to find and review the existing anonymous links.</p></div>
+
+<h2>4. Nobody is told when a mailbox starts forwarding email to Gmail</h2>
+<p><strong>What I find:</strong> no alert policies beyond the defaults, auto-forwarding to external addresses permitted, and the unified audit log either switched off or never looked at.</p>
+<p><strong>Why it matters:</strong> when an attacker gets into a mailbox, their first move is almost always a hidden inbox rule that forwards or deletes mail &mdash; typically the invoices &mdash; so they can quietly redirect a payment weeks later. In Switzerland this is the single most common path to actual financial loss I see. The second move is sending phishing to all your contacts from your own domain; your clients' trust in your email is at stake.</p>
+<div class="step-box"><h4>How to check</h4><p>Exchange admin centre &rarr; Mail flow &rarr; Remote domains &rarr; Default: is "Allow automatic forwarding" on? Defender portal &rarr; Policies &rarr; Alert policy: is there anything beyond the Microsoft defaults, and does it send to a mailbox someone reads? Purview &rarr; Audit: does a search return results at all?</p></div>
+<div class="step-box"><h4>The fix</h4><p>Block external auto-forwarding in the outbound anti-spam policy. Make sure audit logging is on. Create three alert policies that go to a mailbox a human reads: creation of inbox forwarding rules, elevation of a user to an admin role, and (if you have P1/P2) risky sign-ins. Takes about half an hour.</p></div>
+
+<h2>5. "Microsoft backs it up" &mdash; and it doesn't</h2>
+<p><strong>What I find:</strong> no backup of Microsoft 365 at all. When I ask, the answer is that it's "in the cloud". What actually exists is Microsoft's retention: deleted items recoverable for 30 days, deleted SharePoint files for 93 days, and after that, nothing. No protection against ransomware that encrypts synced OneDrive files, a disgruntled leaver who empties a mailbox, or a well-meaning colleague who deletes the wrong library.</p>
+<p><strong>Why it matters:</strong> Microsoft's own service agreement tells you to back up your data with a third party. For a Swiss business the nDSG adds a second angle: you are responsible for the availability and integrity of the personal data you hold, and "we assumed Microsoft had it" is not a defence.</p>
+<div class="step-box"><h4>How to check</h4><p>Ask yourself one question: if every file in SharePoint were encrypted tonight, how would you get yesterday's copy back? If the answer involves hoping, you have no backup.</p></div>
+<div class="step-box"><h4>The fix</h4><p>Add a dedicated Microsoft 365 backup covering Exchange, SharePoint, OneDrive and Teams, stored outside Microsoft &mdash; ideally in Switzerland (I use Infomaniak's Swiss storage for this). Then do the thing almost nobody does: test a restore, once a quarter, and write down that you did.</p></div>
+
+<h2>The honest summary</h2>
+<p>None of these five fixes needs new software beyond the backup, and most of them are included in the Business Premium licence many Swiss firms already pay for without using. If you fixed all five this month you would be ahead of most companies your size in Switzerland.</p>
+<p>If you went through the checks above and found two or more red flags, or you'd simply rather have someone do it with you, the first 30 minutes of a conversation with me is free &mdash; and if you're fine, I'll tell you that too.</p>
+</article>
+
+<aside class="sidebar">
+<div class="s-card">
+<h3>Check your own score</h3>
+<p>The free Security &amp; nDSG Readiness Check covers these five settings and seven more. Twelve questions, three minutes, a prioritised fix list.</p>
+<a href="techvee-contact.html">Book a free first call</a>
+<a href="techvee-tools.html#security-check" class="ol">Run the readiness check &rarr;</a>
+</div>
+<div class="s-about">
+<h3>Paul Shadwell</h3>
+<p>Senior IT consultant and Microsoft CSP based in Turbenthal, Canton Zurich. Working with Swiss businesses on M365, Azure, and compliance since 2015.</p>
+<a href="techvee-about.html">About Paul &rarr;</a>
+</div>
+</aside>
+</div></div></div>
+
+<section class="cta-section"><div class="container">
+<div class="eyebrow">Found a red flag?</div>
+<h2>Let&#x27;s fix it in an afternoon.</h2>
+<p>30 minutes, free. Bring your findings and I'll tell you what order to tackle them in &mdash; or that you're fine.</p>
+<div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+<a href="techvee-contact.html" class="btn-primary">Book a free call</a>
+<a href="techvee-tools.html#security-check" class="btn-outline">Run the readiness check</a>
+</div></div></section>
+<div id="site-footer"></div>
+<script src="components.js"></script>
+</body>
+</html>

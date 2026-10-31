@@ -1,7 +1,25 @@
 // components.js — edit this ONE file to update nav & footer across every page
 
-// ── Calendly booking link (change here if your scheduling URL changes) ──
-const CALENDLY_URL = "https://calendly.com/paul-shadwell-techvee/30min";
+// ── Booking system — ONE place to switch from Calendly to Microsoft Bookings ──
+//   provider: "calendly"  → popup on every "Book a call" button + inline widget on the contact pages
+//   provider: "bookings"  → buttons link to the contact page, which embeds the Bookings page in an iframe
+//   To switch: set provider to "bookings" and paste your Bookings page URL
+//   (Microsoft 365 admin → Bookings → your calendar → "Booking page" → copy link).
+const BOOKING = {
+  provider: "calendly",
+  url: "https://calendly.com/paul-shadwell-techvee/30min"
+};
+const CALENDLY_URL = BOOKING.url; // kept for backwards compatibility
+
+// ── Languages ──
+// English pages live in the site root, German pages in /de/. Each page's counterpart:
+const LANG_MAP = {
+  "index.html": "de/index.html",
+  "techvee-services.html": "de/leistungen.html",
+  "techvee-contact.html": "de/kontakt.html",
+  "impressum.html": "de/impressum.html",
+  "privacy.html": "de/datenschutz.html"
+};
 
 // ── Privacy-friendly, cookieless analytics (self-hosted Umami) ──
 // Umami sets no cookies and stores no personal identifiers, so it is loaded
@@ -18,16 +36,79 @@ const NAV_HTML = `
     </button>
     <ul class="nav-links" id="main-nav-links">
       <li><a href="techvee-services.html">Services</a></li>
-      <li><a href="techvee-swiss-it-compliance.html">Swiss IT &amp; Compliance</a></li>
+      <li><a href="techvee-swiss-it-compliance.html">Swiss Compliance</a></li>
       <li><a href="techvee-ai-copilot.html">AI &amp; Copilot</a></li>
-      <li><a href="techvee-hosting.html">Web Hosting</a></li>
+      <li><a href="techvee-hosting.html">Hosting</a></li>
       <li><a href="techvee-tools.html">Free Tools</a></li>
-      <li><a href="techvee-about.html">About Paul</a></li>
+      <li><a href="techvee-about.html">About</a></li>
       <li><a href="techvee-blog.html">Blog</a></li>
+      <li class="nav-lang"><a href="de/index.html" data-lang-switch hreflang="de" lang="de" title="Deutsche Version">DE</a></li>
     </ul>
     <a href="techvee-contact.html" class="nav-cta" data-calendly>Book a Free Call &rarr;</a>
   </div>
 </nav>`;
+
+const NAV_HTML_DE = `
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand"><img src="../Techvee-logo.png" alt="Techvee GmbH" class="nav-logo"></a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Menü öffnen" aria-expanded="false" aria-controls="main-nav-links">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="main-nav-links">
+      <li><a href="leistungen.html">Leistungen</a></li>
+      <li><a href="index.html#compliance">Compliance</a></li>
+      <li><a href="index.html#ki">KI &amp; Copilot</a></li>
+      <li><a href="index.html#hosting">Hosting</a></li>
+      <li><a href="../techvee-tools.html">Tools <span class="nav-en">EN</span></a></li>
+      <li><a href="index.html#paul">Über Paul</a></li>
+      <li class="nav-lang"><a href="../index.html" data-lang-switch hreflang="en" lang="en" title="Switch to English">EN</a></li>
+    </ul>
+    <a href="kontakt.html" class="nav-cta" data-calendly>Gespräch buchen &rarr;</a>
+  </div>
+</nav>`;
+
+const FOOTER_HTML_DE = `
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="../Techvee-logo.png" alt="Techvee GmbH" class="footer-logo">
+        <span class="footer-tagline">IT- &amp; KI-Beratung<br>für Schweizer KMU</span>
+      </div>
+      <div class="footer-col">
+        <h4>Leistungen</h4>
+        <a href="leistungen.html#adhoc">Ad-hoc-Support</a>
+        <a href="leistungen.html#retainer">Monatspauschale</a>
+        <a href="leistungen.html#projekte">Projekte</a>
+        <a href="index.html#ki">KI &amp; Microsoft Copilot</a>
+        <a href="index.html#hosting">Schweizer Hosting &amp; Backup</a>
+        <a href="leistungen.html#csp">Microsoft-365-Lizenzen (CSP)</a>
+      </div>
+      <div class="footer-col">
+        <h4>Kompetenzen</h4>
+        <a href="index.html#compliance">Schweizer IT-Compliance (nDSG)</a>
+        <a href="index.html#compliance">Microsoft 365 &amp; Azure</a>
+        <a href="index.html#ki">KI &amp; Automatisierung</a>
+        <a href="index.html#partner">Exoscale, SafeSwissCloud &amp; Infomaniak</a>
+        <a href="../techvee-tools.html#security-check">nDSG-Readiness-Check (EN)</a>
+      </div>
+      <div class="footer-col">
+        <h4>Unternehmen</h4>
+        <a href="index.html#paul">Über Paul</a>
+        <a href="../techvee-blog.html">Blog (EN)</a>
+        <a href="kontakt.html">Kontakt</a>
+        <a href="../index.html" data-lang-switch hreflang="en" lang="en">English version</a>
+        <address style="margin-top:8px;font-style:normal;">Techvee GmbH<br>Sonnenbergstrasse 11b<br>8488 Turbenthal</address>
+        <a href="mailto:info@techvee.com">info@techvee.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Techvee GmbH &middot; UID CHE-462.857.052 MWST &middot; Turbenthal ZH</span>
+      <span><a href="datenschutz.html">Datenschutz</a> &middot; <a href="impressum.html">Impressum</a></span>
+    </div>
+  </div>
+</footer>`;
 
 const FOOTER_HTML = `
 <footer>
@@ -61,6 +142,7 @@ const FOOTER_HTML = `
         <a href="techvee-blog.html">Blog</a>
         <a href="techvee-tools.html">Free Tools</a>
         <a href="techvee-contact.html">Contact</a>
+        <a href="de/index.html" data-lang-switch hreflang="de" lang="de">Deutsche Version</a>
         <address style="margin-top:8px;font-style:normal;">Techvee GmbH<br>Sonnenbergstrasse 11b<br>8488 Turbenthal, Switzerland</address>
         <a href="mailto:info@techvee.com">info@techvee.com</a>
       </div>
@@ -76,14 +158,25 @@ document.addEventListener('DOMContentLoaded', function () {
   // Ensure the JS reveal gate is set even if the head snippet is missing.
   document.documentElement.classList.add('js');
 
-  // ── Inject nav & footer ──
+  // ── Inject nav & footer (German pages live under /de/) ──
+  const IS_DE = /\/de\/[^/]*$/.test(window.location.pathname);
   const navSlot = document.getElementById('site-nav');
-  if (navSlot) navSlot.outerHTML = NAV_HTML;
+  if (navSlot) navSlot.outerHTML = IS_DE ? NAV_HTML_DE : NAV_HTML;
   const footerSlot = document.getElementById('site-footer');
-  if (footerSlot) footerSlot.outerHTML = FOOTER_HTML;
+  if (footerSlot) footerSlot.outerHTML = IS_DE ? FOOTER_HTML_DE : FOOTER_HTML;
 
-  // ── Active link highlight ──
+  // ── Language switch points at this page's counterpart ──
   const current = window.location.pathname.split('/').pop() || 'index.html';
+  (function () {
+    let target = null;
+    if (IS_DE) {
+      for (const en in LANG_MAP) if (LANG_MAP[en] === 'de/' + current) target = '../' + en;
+      if (!target) target = '../index.html';
+    } else {
+      target = LANG_MAP[current] || 'de/index.html';
+    }
+    document.querySelectorAll('[data-lang-switch]').forEach(a => { a.setAttribute('href', target); });
+  })();
   document.querySelectorAll('#main-nav-links a').forEach(a => {
     if (a.getAttribute('href') === current) a.classList.add('active');
   });
@@ -126,10 +219,35 @@ document.addEventListener('DOMContentLoaded', function () {
     try { localStorage.removeItem('techvee-cookie-consent'); } catch (e) {}
   })();
 
-  // ── Calendly popup booking ──
-  // The contact page already embeds the calendar inline, so it loads its own
-  // Calendly assets; everywhere else we load them here and bind [data-calendly].
+  // ── Booking: inline embed on contact pages (#booking-embed), popup elsewhere ──
   (function () {
+    var embed = document.getElementById('booking-embed');
+    if (embed) {
+      if (BOOKING.provider === 'calendly') {
+        var w = document.createElement('div');
+        w.className = 'calendly-inline-widget';
+        w.setAttribute('data-url', BOOKING.url + '?hide_gdpr_banner=1&primary_color=1dace8');
+        embed.appendChild(w);
+        if (!document.querySelector('link[href*="calendly.com/assets/external/widget.css"]')) {
+          var l = document.createElement('link'); l.rel = 'stylesheet'; l.href = 'https://assets.calendly.com/assets/external/widget.css'; document.head.appendChild(l);
+        }
+        if (!document.querySelector('script[src*="calendly.com/assets/external/widget.js"]')) {
+          var s = document.createElement('script'); s.src = 'https://assets.calendly.com/assets/external/widget.js'; s.async = true; document.body.appendChild(s);
+        }
+      } else {
+        var f = document.createElement('iframe');
+        f.src = BOOKING.url; f.title = 'Booking calendar'; f.loading = 'lazy';
+        f.style.cssText = 'width:100%;height:760px;border:0;display:block;';
+        embed.appendChild(f);
+      }
+      document.querySelectorAll('[data-booking-url]').forEach(function (a) { a.setAttribute('href', BOOKING.url); });
+    }
+  })();
+
+  // ── Calendly popup on [data-calendly] buttons (only when the provider is Calendly;
+  //    with Microsoft Bookings the buttons simply follow their link to the contact page) ──
+  (function () {
+    if (BOOKING.provider !== 'calendly') return;
     var triggers = document.querySelectorAll('[data-calendly]');
     if (!triggers.length) return;
 

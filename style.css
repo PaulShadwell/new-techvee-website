@@ -82,7 +82,9 @@ nav {
   padding: 0 40px;
 }
 .nav-logo { height: 48px; display: block; }   /* ← CHANGE LOGO HEIGHT HERE */
-.nav-links { display: flex; gap: 28px; list-style: none; font-size: 13.5px; font-weight: 500; }
+.nav-links { display: flex; gap: 22px; list-style: none; font-size: 13.5px; font-weight: 500; align-items: center; }
+.nav-links li { white-space: nowrap; }
+@media (min-width: 921px) and (max-width: 1180px) { .nav-links { gap: 16px; font-size: 13px; } }
 .nav-links a { text-decoration: none; color: var(--grey); transition: color 0.15s; }
 .nav-links a:hover, .nav-links a.active { color: var(--brand); }
 .nav-cta {
@@ -407,3 +409,9 @@ html { scroll-behavior: smooth; }
 .form-success p{font-size:14px;color:var(--grey);line-height:1.65;}
 .form-success a{color:var(--brand);text-decoration:none;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:none;}}
+
+/* ── LANGUAGE SWITCH ── */
+.nav-lang a { border: 1px solid var(--border); border-radius: 6px; padding: 3px 8px !important; font-size: 12px !important; font-weight: 600; letter-spacing: .04em; }
+.nav-lang a:hover { border-color: var(--brand); }
+.nav-en { font-size: 10px; opacity: .6; margin-left: 3px; vertical-align: 1px; }
+.lang-note { font-size: 12.5px; color: var(--grey); background: var(--offwhite); border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; margin: 0 0 20px; }
