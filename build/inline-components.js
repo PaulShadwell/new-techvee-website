@@ -31,17 +31,30 @@ function extract(name) {
 }
 const NAV = extract('NAV_HTML');
 const FOOTER = extract('FOOTER_HTML');
+const NAV_DE = extract('NAV_HTML_DE');
+const FOOTER_DE = extract('FOOTER_HTML_DE');
+const LANG_MAP = new Function('return ' + (src.match(/const LANG_MAP = (\{[\s\S]*?\});/) || [, '{}'])[1])();
 
-const pages = fs.readdirSync(root).filter(f => f.endsWith('.html'));
+// English pages in the root, German pages in de/
+const pages = fs.readdirSync(root).filter(f => f.endsWith('.html')).map(f => ({ file: f, rel: f, de: false }));
+const deDir = path.join(root, 'de');
+if (fs.existsSync(deDir)) fs.readdirSync(deDir).filter(f => f.endsWith('.html')).forEach(f => pages.push({ file: f, rel: 'de/' + f, de: true }));
 let changed = 0, missing = [];
 
-for (const f of pages) {
-  const p = path.join(root, f);
+for (const pg of pages) {
+  const f = pg.file;
+  const p = path.join(root, pg.rel);
   let html = fs.readFileSync(p, 'utf8');
   const before = html;
 
-  html = html.replace(/<div id="site-nav"><\/div>/, NAV);
-  html = html.replace(/<div id="site-footer"><\/div>/, FOOTER);
+  html = html.replace(/<div id="site-nav"><\/div>/, pg.de ? NAV_DE : NAV);
+  html = html.replace(/<div id="site-footer"><\/div>/, pg.de ? FOOTER_DE : FOOTER);
+
+  // Language switch → this page's counterpart (the runtime does the same).
+  let target;
+  if (pg.de) { target = '../index.html'; for (const en in LANG_MAP) if (LANG_MAP[en] === pg.rel) target = '../' + en; }
+  else target = LANG_MAP[f] || 'de/index.html';
+  html = html.replace(/(<a href=")[^"]*(" data-lang-switch)/g, '$1' + target + '$2');
 
   // Mark the current page's nav link as active (the runtime does the same).
   html = html.replace(/(<ul class="nav-links"[\s\S]*?<\/ul>)/, block =>

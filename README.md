@@ -70,6 +70,36 @@ To preview the built output locally: `node build/inline-components.js` in a scra
   `techvee.com`, `www.techvee.com`) so the redirect itself is served over valid TLS.
 - Email stays on `@techvee.com` — the redirect only affects the website.
 
+## German pages (`de/`)
+
+- German versions live in `de/`: `index.html`, `leistungen.html`, `kontakt.html`,
+  `impressum.html`, `datenschutz.html`. The English↔German pairs are listed in
+  `LANG_MAP` in `components.js`; the language switch in the nav and footer
+  (`data-lang-switch`) points at the page's counterpart automatically (runtime and
+  build step both read that map). Pages with no German twin switch to `de/index.html`.
+- German nav/footer are `NAV_HTML_DE` / `FOOTER_HTML_DE` in `components.js`; asset
+  paths inside `de/` use `../`.
+- Each paired page carries `hreflang` links (en, de-CH, x-default) in both directions.
+- The tools page and blog are English only for now; German pages link to them with
+  an "EN" marker.
+- `build/make-de.py` assembled the German pages from the English page's `<head>` plus
+  a hand-written German body; it's a helper for adding more, not needed at deploy time.
+
+## Booking system (Calendly → Microsoft Bookings)
+
+The booking provider is a single setting at the top of `components.js`:
+
+```js
+const BOOKING = { provider: "calendly", url: "https://calendly.com/..." };
+```
+
+To move to Microsoft Bookings: create a Bookings calendar in Microsoft 365, publish
+its booking page, copy the page URL, then set `provider: "bookings"` and paste the URL.
+Every "Book a call" button then links to the contact pages, which embed the Bookings
+page in an iframe (`#booking-embed`); the popup widget is Calendly-only. Also update the
+third-party table in `privacy.html` and `de/datenschutz.html` (Calendly → Microsoft
+Bookings, EU/Switzerland).
+
 ## Fonts & analytics
 
 - Inter and Playfair Display are **self-hosted** in `fonts/` (variable fonts, OFL).
